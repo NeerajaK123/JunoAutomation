@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="junitreport" name="WMI_ExxonMobil_Automation">
+	<property environment="env" />
+	<property file="build.properties"/>
+	<path id="WMI_ExxonMobil_Automation.classpath">
+		<pathelement location="bin/" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/selenium-server-standalone-2.48.2 (1).jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/commons-codec-1.5.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/dom4j-1.6.1.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/poi-3.8-beta4.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/poi-3.8-beta4-sources.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/poi-ooxml-3.8-beta4.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/poi-ooxml-schemas-3.8-beta4.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/stax-api-1.0.1.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/xml-apis-1.0.b2.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/xmlbeans-2.3.0.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/junit5-api-5.0.0-ALPHA.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/ashot-1.4.10.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/mail-1.4.7.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/activation-1.1.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/zt-zip-1.8.jar" />
+		<pathelement location="../WMI_ExxonMobil_Automation/lib/tools.jar" />
+		<pathelement location="buildStage/" />
+	</path>
+	<target name="create" depends="clean">
+		<mkdir dir="buildStage"/>
+		<mkdir dir="test-output/failurescrnshots"/>
+		<fileset dir="test-output">
+			<include name="outputlog.txt"/>
+		</fileset>
+	</target>
+	<target name="clean">
+		<delete dir="buildStage"/>
+		<delete dir="junit"/>
+		<delete dir="junit.zip"/>
+		<delete dir="test-output"/>
+	</target>
+	<target name="compile" depends="create">
+		<javac includeantruntime="false" srcdir="./src" destdir="buildStage" classpathref="WMI_ExxonMobil_Automation.classpath">
+			<compilerarg value="-Xlint:unchecked" />
+		</javac>
+	</target>
+	<target name="testCase" depends="compile">
+		<mkdir dir="junit"/>
+		<echo message="TestDataSheetLocation ${TestDataSheetLocation}" />
+		<junit fork="yes" printsummary="withOutAndErr" showoutput="true">
+			<sysproperty key="TestDataSheetLocation" value="${TestDataSheetLocation}" />
+			<formatter type="xml" />
+
+			<!-- EXTERNAL USER CASES -->
+			<test name="test.TC_SMK_WMI_CSC_DownloadSite_Features_Report" todir="junit"/>
+			<test name="test.TC_SMK_WMI_Customer_DownloadSite_Features_Report" todir="junit"/>
+			<test name="test.TC_SMK_WMI_CSC_Site_Features_RequestForm" todir="junit"/>
+			<test name="test.TC_SMK_WMI_Customer_Site_Features_RequestForm" todir="junit"/>
+			<test name="test.TC_SMK_WMI_TM_CSC_Maintenance_RequestForm" todir="junit"/>
+			<test name="test.TC_SMK_WMI_Customer_Maintenance_RequestForm" todir="junit"/>
+			<test name="test.TC_SMK_WMI_CSC_Approval_Maintenance_RequestForm" todir="junit"/>
+			
+			<classpath refid="WMI_ExxonMobil_Automation.classpath" />
+			
+		</junit>
+	</target>
+	<target name="junitreport" depends="testCase">
+		<junitreport todir="junit">
+			<fileset dir="junit">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="junit" />
+		</junitreport>
+	</target>
+	<target name="Open in browser" depends="junitreport">
+		<property name="myDirectory" location="../WMI_ExxonMobil_Automation/junit" />
+		<script language="javascript">
+			<![CDATA[
+                  var location = "file:///"+project.getProperty("myDirectory").toString().replaceAll("\\\\","/")+"/index.html";
+                  location = location.toString().replace(/ /g, "%20");
+                  var uriLocation = java.net.URI.create(location);
+                  var desktop = java.awt.Desktop.getDesktop();
+                  desktop.browse(uriLocation);
+              ]]>
+		</script>
+	</target>
+</project>
+
+<!--target name="send email" depends="Open in browser">
+            <junit fork="yes" showoutput="true">
+                  <test name="test.Email" todir="junit" />
+                  <classpath refid="WMI_ExxonMobil_Automation.classpath" />
+            </junit>
+      </target>
+      <target name="send email" depends="Open in browser">
+      <mail mailhost="smtp.gmail.com" mailport="25" subject="Test build"
+            user="axl8652@gmail.com" password="******">      
+        <from address="axl8652@gmail.com"/>           
+        <replyto address="subhchatterjee@deloitte.com"/>
+        <to address="subhchatterjee@deloitte.com"/>
+        <message>The ${buildname} build has completed</message>
+        <attachments>
+          <fileset dir="dist">
+            <include name="**/*.html"/>
+          </fileset>
+        </attachments>
+      </mail>
+      </target-->
+
+
+
+

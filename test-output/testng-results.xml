@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="226290" started-at="2019-01-04T06:37:09Z" finished-at="2019-01-04T06:40:55Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="226290" started-at="2019-01-04T06:37:09Z" finished-at="2019-01-04T06:40:55Z">
+      <class name="test.TC_PostDeployment">
+        <test-method status="PASS" signature="PersonAccountCreation()[pri:0, instance:test.TC_PostDeployment@7a8c8dcf]" name="PersonAccountCreation" duration-ms="226212" started-at="2019-01-04T12:07:09Z" description="Post deployment" finished-at="2019-01-04T12:10:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PersonAccountCreation -->
+      </class> <!-- test.TC_PostDeployment -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
