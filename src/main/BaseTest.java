@@ -46,7 +46,6 @@ public class BaseTest {
 	
 	public LoginPage loginPage;
 	public LogoutPage logoutPage;
-	
 	public static WebDriver driver;
 	
 	/** The master test data path. */
