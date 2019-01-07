@@ -81,48 +81,5 @@ public class Excelmapping {
 		}
 	}
 
-	public enum MasterCaseCreation {
-
-		STRMASTERCASENUMBER("MasterCaseNumber"), STRCONTACTNAME("ContactName");
-
-		private String value;
-
-		private MasterCaseCreation(String value) {
-			this.value = value;
-		}
-
-		public String get() {
-			return value;
-		}
-	}
-
-	public enum DataCreation {
-
-		STRPERSONACCOUNTLASTNAME("PersonAccountName"),
-		STRANONYMOUSACCOUNTLASTNAME("AnonymousAccountName"),
-		STRINSTITUTIONACCOUNTNAME("InstitutionAccountName"),		
-		STRPRODUCTNAME("ProductName"),
-		STRDOSAGEFORM("DosageForm"),
-		STRROLEINFORMATION_PCM("RoleInformation_PCM"),
-		STRSUBCASE_PCM("Subcase_PCM"),
-		STRSUBCASE_SR("Subcase_SR"),
-		STRROLEINFORMATION_SR("RoleInformation_SR"),
-		STRADMIN("Admin"),
-		STRADMINPWD("Admin_pwd"),
-		STRPCMMEDDEVICE("PCM_Medical Device"),
-		STRPCMASSESMENTNAME("PCMAssesmentName"),
-		STRINVESTIGATIONSITE("PCMInvestigationAssessmentSite"),
-		STRINVESTIGATIONDEPT("PCMInvestigationAssessmentDepartment"),
-		STRPCMASSESMENTCREATED("PCMAssesmentCreated");
-
-		private String value;
-
-		private DataCreation(String value) {
-			this.value = value;
-		}
-
-		public String get() {
-			return value;
-		}
-	}
+	
 }

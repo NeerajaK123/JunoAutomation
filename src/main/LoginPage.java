@@ -35,7 +35,7 @@ public class LoginPage {
 		PropertyConfigurator.configure("log4j.properties");
 	}
 	/*
-	 * UI Maps on Login Page.
+	 * UI Maps for Login Page.
 	 */
 	/** The user name. */
 	@FindBy(id = "username")

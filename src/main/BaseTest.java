@@ -83,7 +83,7 @@ public class BaseTest {
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
-				;
+				
 				break;
 			}
 		case "GoogleChrome":

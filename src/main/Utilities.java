@@ -24,7 +24,7 @@ import resources.ExcelReader;
  */
 public class Utilities {
 
-	/** The monthint. */
+	/** The month int. */
 	public static Integer monthint;
 
 	/** The formatter. */

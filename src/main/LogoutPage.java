@@ -29,7 +29,7 @@ public class LogoutPage {
 		PropertyConfigurator.configure("log4j.properties");
 	}
 
-	/** The link log out. */
+	
 	/*
 	 * UI Maps for Logout Page.
 	 */

@@ -6,7 +6,7 @@ package main;
 public class Config {
 
 	/**
-	 * The Enum timeouts.
+	 * The Enum timeout.
 	 */
 	public enum timeouts {
 

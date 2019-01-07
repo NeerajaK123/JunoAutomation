@@ -19,10 +19,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ExcelReader {
 
-	/** The wrksheet. */
+	/** The worksheet. */
 	public static Sheet wrksheet;
 
-	/** The wrkbook. */
+	/** The workbook. */
 	public static Workbook wrkbook;
 
 	/** The row count. */
