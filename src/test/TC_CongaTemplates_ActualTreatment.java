@@ -60,7 +60,7 @@ public class TC_CongaTemplates_ActualTreatment  extends BaseTest {
 	 */
 	public void step01(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
-		excel.RExcelWriter(Excelmapping.CongaTemplateActualTreatment.CONGATEMPLATENAME.get(),Utilities.generateRandomNameWithTimestamp());
+		excel.RExcelWriter(Excelmapping.CongaTemplateCreation.CONGATEMPLATENAME.get(),Utilities.generateRandomNameWithTimestamp());
 		baseTest = new BaseTest(environmentURL, strBrowser);
 		System.out.println("*****Starting to execute: TC_CongaTemplates_ActualTreatment****");
 		try {
@@ -81,7 +81,7 @@ public class TC_CongaTemplates_ActualTreatment  extends BaseTest {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			objbasetest.congaTemplatesPage.congaTemplates_ActualTreatment(					
-					excel.RExcelReader(Excelmapping.CongaTemplateActualTreatment.CONGATEMPLATENAME.get()));
+					excel.RExcelReader(Excelmapping.CongaTemplateCreation.CONGATEMPLATENAME.get()));
 			} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();

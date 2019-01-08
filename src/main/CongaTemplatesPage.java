@@ -93,14 +93,14 @@ public class CongaTemplatesPage {
 
 	public void congaTemplates_ActualTreatment(String Name) {
 		try {
-			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.waitforElement(input_CongaTemplateName, Config.timeouts.LONGWAIT.get()).sendKeys(Name);
 			BaseTest.waitforElement(PickList_object, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.waitforElement(PickList_object_Treatment_Actual, Config.timeouts.LONGWAIT.get()).click();
+			PickList_object_Treatment_Actual.click();
 			BaseTest.waitforElement(PickList_Group, Config.timeouts.LONGWAIT.get()).click();			
-			BaseTest.waitforElement(PickList_Group_ScheduleConfirmationForm, Config.timeouts.LONGWAIT.get()).click();
+			PickList_Group_ScheduleConfirmationForm.click();
 			BaseTest.waitforElement(Chkbx_ActiveConga, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(span_Country, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(btn_MoveselectiontoChosen, Config.timeouts.LONGWAIT.get()).click();			
@@ -108,7 +108,85 @@ public class CongaTemplatesPage {
 			BaseTest.scrolldowntoVisibility(PickList_Status);
 			BaseTest.pleasewait(Config.timeouts.SHORTWAIT.get());
 			BaseTest.waitforElement(PickList_Status, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.waitforElement(PickList_Status_Approved, Config.timeouts.LONGWAIT.get()).click();			
+			PickList_Status_Approved.click();			
+			BaseTest.waitforElement(Chkbx_ContinueConga, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_Save_CongaTemplate, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(txt_CongaTemplate, Config.timeouts.LONGWAIT.get());		
+			Assert.assertTrue(txt_CongaTemplate.isDisplayed());
+			String congaTemplate = driver.findElement(By.xpath(
+					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template Treatment(Actual) name is : " + congaTemplate);
+						
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e.getMessage());
+			Assert.fail();			
+		}
+	}
+	
+	/* This method covers creation of Conga Templates -> ObjectType_ProductOrder 
+	 */
+
+	public void congaTemplates_ProductOrder(String Name) {
+		try {
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(input_CongaTemplateName, Config.timeouts.LONGWAIT.get()).sendKeys(Name);
+			BaseTest.waitforElement(PickList_object, Config.timeouts.LONGWAIT.get()).click();
+			PickList_object_Treatment_Actual.click();
+			BaseTest.waitforElement(PickList_Group, Config.timeouts.LONGWAIT.get()).click();			
+			PickList_Group_ScheduleConfirmationForm.click();
+			BaseTest.waitforElement(Chkbx_ActiveConga, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(span_Country, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_MoveselectiontoChosen, Config.timeouts.LONGWAIT.get()).click();			
+			BaseTest.waitforElement(PickList_Status, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(PickList_Status);
+			BaseTest.pleasewait(Config.timeouts.SHORTWAIT.get());
+			BaseTest.waitforElement(PickList_Status, Config.timeouts.LONGWAIT.get()).click();
+			PickList_Status_Approved.click();			
+			BaseTest.waitforElement(Chkbx_ContinueConga, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_Save_CongaTemplate, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(txt_CongaTemplate, Config.timeouts.LONGWAIT.get());		
+			Assert.assertTrue(txt_CongaTemplate.isDisplayed());
+			String congaTemplate = driver.findElement(By.xpath(
+					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template Treatment(Actual) name is : " + congaTemplate);
+						
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e.getMessage());
+			Assert.fail();			
+		}
+	}
+	
+	/* This method covers creation of Conga Templates -> ObjectType_ShipmentAuthorisation 
+	 */
+
+	public void congaTemplates_ShipmentAuthorisation(String Name) {
+		try {
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(input_CongaTemplateName, Config.timeouts.LONGWAIT.get()).sendKeys(Name);
+			BaseTest.waitforElement(PickList_object, Config.timeouts.LONGWAIT.get()).click();
+			PickList_object_Treatment_Actual.click();
+			BaseTest.waitforElement(PickList_Group, Config.timeouts.LONGWAIT.get()).click();			
+			PickList_Group_ScheduleConfirmationForm.click();
+			BaseTest.waitforElement(Chkbx_ActiveConga, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(span_Country, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_MoveselectiontoChosen, Config.timeouts.LONGWAIT.get()).click();			
+			BaseTest.waitforElement(PickList_Status, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(PickList_Status);
+			BaseTest.pleasewait(Config.timeouts.SHORTWAIT.get());
+			BaseTest.waitforElement(PickList_Status, Config.timeouts.LONGWAIT.get()).click();
+			PickList_Status_Approved.click();			
 			BaseTest.waitforElement(Chkbx_ContinueConga, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(btn_Save_CongaTemplate, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());

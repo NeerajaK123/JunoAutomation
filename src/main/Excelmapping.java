@@ -75,12 +75,12 @@ public class Excelmapping {
 		}
 	}
 
-	public enum CongaTemplateActualTreatment {
+	public enum CongaTemplateCreation {
 
 		CONGATEMPLATENAME("Name");
 		private String value;
 
-		private CongaTemplateActualTreatment(String value) {
+		private CongaTemplateCreation(String value) {
 			this.value = value;
 		}
 
