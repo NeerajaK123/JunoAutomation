@@ -173,6 +173,8 @@ public class Utilities {
 						.longValue()));
 		return actual;
 	}
+	
+
 
 	/**
 	 * Generate lubes order upload file element current date.
@@ -228,17 +230,7 @@ public class Utilities {
 
 	}
 
-	/**
-	 *
-	 * @return the string
-	 * @throws ParseException
-	 *             the parse exception
-	 */
-	public static String generateDynamicNumber() throws ParseException {
-		String stimestamp = timestamp(formatsysDate().toString());
-		return "T" + stimestamp;
-
-	}
+	
 	
 	
 	
@@ -272,8 +264,7 @@ public class Utilities {
 		String RandomNum = Integer.toString(x);
 		return "Auto" +RandomNum+ "@gmail.com";
 
-	}
-	
+	}	
 	/**
 	 * Generate Three digit random number for LastName
 	 * @return
@@ -287,8 +278,11 @@ public class Utilities {
 		int x = random.nextInt(9000) + 100;
 		String RandomNum = Integer.toString(x);
 		return "Auto_" +RandomNum;
-
 	}
+	public static String generateRandomNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "Auto_" + stimestamp;
+		} 
 
 	/**
 	 * Generate Three digit random number for Institution

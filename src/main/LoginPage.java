@@ -13,6 +13,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.relevantcodes.extentreports.LogStatus;
+
+import extentReports.ExtentTestManager;
+
 /**
  * The Class LoginPage.
  */
@@ -86,14 +90,18 @@ public class LoginPage {
 		} catch (AssertionError e) {
 			System.out.println(e.getMessage());
 			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e.getMessage());
 			Assert.fail();			
 		} catch (NoSuchElementException e1) {
 			System.out.println(e1.getMessage());
 			logger.info("The exception is : " + e1.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e1.getMessage());
 			Assert.fail();
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println(e.getMessage());
 			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e.getMessage());
+			Assert.fail();
 		}
 	}
 /*
@@ -112,6 +120,8 @@ public class LoginPage {
 			Thread.sleep(5000);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e.getMessage());
 			Assert.fail();
 		}
 	}

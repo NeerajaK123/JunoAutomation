@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="test.TC_PersonAccountCreation">
+      <class name="test.TC_CongaTemplates_ActualTreatment">
         <methods>
-          <include name="PersonAccountCreation"/>
+          <include name="CongaTemplates_ActualTreatment_Creation"/>
         </methods>
-      </class> <!-- test.TC_PersonAccountCreation -->
+      </class> <!-- test.TC_CongaTemplates_ActualTreatment -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

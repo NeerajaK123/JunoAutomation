@@ -46,10 +46,11 @@ public class BaseTest {
 	
 	public LoginPage loginPage;
 	public LogoutPage logoutPage;
+	public CongaTemplatesPage congaTemplatesPage;
 	public static WebDriver driver;
 	
 	/** The master test data path. */
-	public static String masterTestDataPath = "..\\Juno_automation\\src\\resources\\Juno_TestDataSheet.xlsx";
+	public static String masterTestDataPath = "..\\JunoAutomation\\src\\resources\\Juno_TestDataSheet.xlsx";
 	public static String masterTestSheetName = "MasterTestDataSheet";
 
 
@@ -68,7 +69,7 @@ public class BaseTest {
 		switch (Browser) {
 		case "InternetExplorer":
 			try {
-				System.setProperty("webdriver.ie.driver", "..\\Juno_automation\\src\\resources\\IEDriverServer.exe");
+				System.setProperty("webdriver.ie.driver", "..\\JunoAutomation\\src\\resources\\IEDriverServer.exe");
 				DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 				capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
 				capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
@@ -91,7 +92,7 @@ public class BaseTest {
 				ChromeOptions chrome = new ChromeOptions();
 				chrome.addArguments("--start-maximized");
 				System.setProperty("webdriver.chrome.driver",
-						"..\\Juno_automation\\\\src\\\\resources\\chromedriver.exe");
+						"..\\JunoAutomation\\\\src\\\\resources\\chromedriver.exe");
 				DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 				capabilities.setCapability("ignoreZoomSetting", true);
 				capabilities.setCapability(ChromeOptions.CAPABILITY, chrome);
@@ -107,7 +108,7 @@ public class BaseTest {
 			try {
 				FirefoxProfile profile = new FirefoxProfile();
 				File file = new File(
-						"..\\Juno_automation\\src\\resources\\{b749fc7c-e949-447f-926c-3f4eed6accfe}.xpi");
+						"..\\JunoAutomation\\src\\resources\\{b749fc7c-e949-447f-926c-3f4eed6accfe}.xpi");
 				profile.setEnableNativeEvents(false);
 				profile.addExtension(file);
 				profile.setPreference("extensions.modify_headers.currentVersion", "0.7.1.1-fx");
@@ -156,6 +157,7 @@ public class BaseTest {
 		}
 		loginPage = new LoginPage(driver);
 		logoutPage = new LogoutPage(driver);
+		congaTemplatesPage = new CongaTemplatesPage(driver);
 		
 		
 	}
@@ -166,7 +168,7 @@ public class BaseTest {
 	public BaseTest() {
 		loginPage = new LoginPage(driver);
 		logoutPage = new LogoutPage(driver);
-		
+		congaTemplatesPage = new CongaTemplatesPage(driver);
 		
 
 	}

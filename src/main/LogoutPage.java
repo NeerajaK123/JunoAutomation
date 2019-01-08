@@ -6,6 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.relevantcodes.extentreports.LogStatus;
+
+import extentReports.ExtentTestManager;
 
 /**
  * The Class LogoutPage.
@@ -58,7 +63,8 @@ public class LogoutPage {
 		} catch (Exception logoutissue) {
 			System.out.println(logoutissue.getMessage());
 			logger.info("The exception is : " + logoutissue.getMessage());
-			
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + logoutissue.getMessage());
+			Assert.fail();
 		}
 	}
 }

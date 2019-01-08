@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="226290" started-at="2019-01-04T06:37:09Z" finished-at="2019-01-04T06:40:55Z">
+  <suite name="Suite" duration-ms="109412" started-at="2019-01-08T10:27:56Z" finished-at="2019-01-08T10:29:46Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="226290" started-at="2019-01-04T06:37:09Z" finished-at="2019-01-04T06:40:55Z">
-      <class name="test.TC_PostDeployment">
-        <test-method status="PASS" signature="PersonAccountCreation()[pri:0, instance:test.TC_PostDeployment@7a8c8dcf]" name="PersonAccountCreation" duration-ms="226212" started-at="2019-01-04T12:07:09Z" description="Post deployment" finished-at="2019-01-04T12:10:55Z">
+    <test name="Test" duration-ms="109412" started-at="2019-01-08T10:27:56Z" finished-at="2019-01-08T10:29:46Z">
+      <class name="test.TC_CongaTemplates_ActualTreatment">
+        <test-method status="PASS" signature="CongaTemplates_ActualTreatment_Creation()[pri:0, instance:test.TC_CongaTemplates_ActualTreatment@74650e52]" name="CongaTemplates_ActualTreatment_Creation" duration-ms="109384" started-at="2019-01-08T15:57:56Z" description="Logged In As Business Admin" finished-at="2019-01-08T15:59:46Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- PersonAccountCreation -->
-      </class> <!-- test.TC_PostDeployment -->
+        </test-method> <!-- CongaTemplates_ActualTreatment_Creation -->
+      </class> <!-- test.TC_CongaTemplates_ActualTreatment -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
