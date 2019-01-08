@@ -3,12 +3,16 @@ package test;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
+import extentReports.ExtentTestManager;
 import main.BaseTest;
 import main.Config;
 import main.Excelmapping;
+import main.Utilities;
 import resources.ExcelReader;
 
-public class TC_NonPrescriber  extends BaseTest {
+public class TC_NonPrescriber extends BaseTest {
 
 	BaseTest baseTest;
 	ExcelReader excel;
@@ -23,7 +27,7 @@ public class TC_NonPrescriber  extends BaseTest {
 	public TC_NonPrescriber() {
 	}
 
-	@Test(description="Creation of NonPrescriber")
+	@Test(description = "Creation of NonPrescriber")
 	public void NonPrescriber() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
@@ -48,18 +52,22 @@ public class TC_NonPrescriber  extends BaseTest {
 			System.out.println(e.getMessage());
 		}
 	}
- 
+
 	/**
 	 * Step 01. Login
 	 */
 	public void step01(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
-	
+
+		excel.RExcelWriter(Excelmapping.DataCreation.NonPrescriber.get(), Utilities.generateRandomNameWithTimestamp());
+		excel.RExcelWriter(Excelmapping.DataCreation.Organisation.get(), Utilities.generateRandomNameWithTimestamp());
+
 		baseTest = new BaseTest(environmentURL, strBrowser);
 		System.out.println("*****Starting to execute: TC_NonPrescriber****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUNCHER.get()));
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}
@@ -73,8 +81,9 @@ public class TC_NonPrescriber  extends BaseTest {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			
-			} catch (Exception e) {
+			objbasetest.JAMSAccount.contactCreation(excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Organisation.get()));
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
 		}
@@ -88,9 +97,10 @@ public class TC_NonPrescriber  extends BaseTest {
 		try {
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			baseTest.logoutPage.logout();
-			driver.close();
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e.getMessage());
 			System.out.println("*****Ending to execute: TC_NonPrescriber*****");
 		}
 	}

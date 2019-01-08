@@ -6,11 +6,11 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
-      <class name="test.TC_MasterCase_PCM_SubCase">
+      <class name="test.TC_NonPrescriber">
         <methods>
-          <include name="PCM_SubCace_CaseProduct"/>
+          <include name="NonPrescriber"/>
         </methods>
-      </class> <!-- test.TC_MasterCase_PCM_SubCase -->
+      </class> <!-- test.TC_NonPrescriber -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

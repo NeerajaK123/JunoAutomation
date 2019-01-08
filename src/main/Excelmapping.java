@@ -10,8 +10,8 @@ public class Excelmapping {
 	public enum Login {
 
 		ADMIN_USERNAME("ADMIN_Username"),
-		ADMIN_PASSWORD("ADMIN_Password");
-		
+		ADMIN_PASSWORD("ADMIN_Password"),
+		APP_LAUNCHER("App");
 
 		/** The value. */
 		private String value;
@@ -77,5 +77,30 @@ public class Excelmapping {
 		}
 	}
 
-	
+	public enum DataCreation {
+
+		NonPrescriber("NonPrescriber"),
+		Organisation("Organisation"),
+		Site("Site");
+
+		/** The value. */
+		private String value;
+		/**
+		 * Instantiates a new login.
+		 *
+		 * @param value
+		 *            the value
+		 */
+		private DataCreation(String value) {
+			this.value = value;
+		}
+		/**
+		 * Gets the.
+		 *
+		 * @return the string
+		 */
+		public String get() {
+			return value;
+		}
+	}
 }

@@ -6,7 +6,7 @@
 	</listeners>
 	<test name="Test">
 		<classes>
-	<class name="test.TC_PostDeployment"/>     
+	<class name="test.TC_NonPrescriber"/>     
 
 
 		</classes>
