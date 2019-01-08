@@ -6,9 +6,9 @@
 	</listeners>
 	<test name="Test">
 		<classes>
-	<class name="test.TC_NonPrescriber"/>     
+	<!-- class name="test.TC_NonPrescriber"/ -->  
 
-
+	<class name="test.TC_CongaTemplates_ActualTreatment"/> 
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

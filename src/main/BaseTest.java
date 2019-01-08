@@ -46,7 +46,11 @@ public class BaseTest {
 	
 	public LoginPage loginPage;
 	public LogoutPage logoutPage;
+
 	public JAMSAccount JAMSAccount;
+
+	public CongaTemplatesPage congaTemplatesPage;
+
 	public static WebDriver driver;
 	
 	/** The master test data path. */
@@ -158,6 +162,8 @@ public class BaseTest {
 		loginPage = new LoginPage(driver);
 		logoutPage = new LogoutPage(driver);
 		JAMSAccount = new JAMSAccount(driver) ;
+		congaTemplatesPage = new CongaTemplatesPage(driver);
+
 		
 		
 	}
@@ -169,6 +175,8 @@ public class BaseTest {
 		loginPage = new LoginPage(driver);
 		logoutPage = new LogoutPage(driver);
 		JAMSAccount = new JAMSAccount(driver) ;
+		congaTemplatesPage = new CongaTemplatesPage(driver);
+
 		
 
 	}

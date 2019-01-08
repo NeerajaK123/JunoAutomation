@@ -9,9 +9,7 @@ public class Excelmapping {
 	 */
 	public enum Login {
 
-		ADMIN_USERNAME("ADMIN_Username"),
-		ADMIN_PASSWORD("ADMIN_Password"),
-		APP_LAUNCHER("App");
+		ADMIN_USERNAME("ADMIN_Username"), ADMIN_PASSWORD("ADMIN_Password"), APP_LAUNCHER("App");
 
 		/** The value. */
 		private String value;
@@ -77,14 +75,27 @@ public class Excelmapping {
 		}
 	}
 
+	public enum CongaTemplateActualTreatment {
+
+		CONGATEMPLATENAME("Name");
+		private String value;
+
+		private CongaTemplateActualTreatment(String value) {
+			this.value = value;
+		}
+
+		public String get() {
+			return value;
+		}
+	}
+
 	public enum DataCreation {
 
-		NonPrescriber("NonPrescriber"),
-		Organisation("Organisation"),
-		Site("Site");
+		NonPrescriber("NonPrescriber"), Organisation("Organisation"), Site("Site");
 
 		/** The value. */
 		private String value;
+
 		/**
 		 * Instantiates a new login.
 		 *
@@ -94,6 +105,7 @@ public class Excelmapping {
 		private DataCreation(String value) {
 			this.value = value;
 		}
+
 		/**
 		 * Gets the.
 		 *
@@ -103,4 +115,5 @@ public class Excelmapping {
 			return value;
 		}
 	}
+
 }
