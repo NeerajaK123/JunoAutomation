@@ -173,8 +173,6 @@ public class Utilities {
 						.longValue()));
 		return actual;
 	}
-	
-
 
 	/**
 	 * Generate lubes order upload file element current date.
@@ -230,12 +228,9 @@ public class Utilities {
 
 	}
 
-	
-	
-	
-	
 	/**
 	 * Generate Three digit random number
+	 * 
 	 * @return
 	 * @throws ParseException
 	 */
@@ -246,12 +241,13 @@ public class Utilities {
 		// generate a random integer from 0 to 899, then add 100
 		int x = random.nextInt(900) + 100;
 		String RandomNum = Integer.toString(x);
-		return "T" +RandomNum;
+		return "T" + RandomNum;
 
 	}
-	
+
 	/**
 	 * Generate Three digit random number for Email
+	 * 
 	 * @return
 	 * @throws ParseException
 	 */
@@ -262,30 +258,39 @@ public class Utilities {
 		// generate a random integer from 0 to 899, then add 100
 		int x = random.nextInt(900) + 100;
 		String RandomNum = Integer.toString(x);
-		return "Auto" +RandomNum+ "@gmail.com";
+		return "Auto" + RandomNum + "@gmail.com";
 
-	}	
+	}
+
 	/**
 	 * Generate Three digit random number for LastName
+	 * 
+	 * @return
+	 * @throws ParseException
+	 */
+	public static String generateRandomNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "Auto_" + stimestamp;
+	}
+
+	/**
+	 * Generate Three digit random number with timestamp
+	 * 
 	 * @return
 	 * @throws ParseException
 	 */
 	public static String lastNameGenerateRandomNumber() throws ParseException {
 		// initialize a Random object somewhere; you should only need one
 		Random random = new Random();
-
 		// generate a random integer from 0 to 899, then add 100
 		int x = random.nextInt(9000) + 100;
 		String RandomNum = Integer.toString(x);
-		return "Auto_" +RandomNum;
+		return "Auto_" + RandomNum;
 	}
-	public static String generateRandomNameWithTimestamp() throws ParseException {
-		String stimestamp = timestamp(formatsysDate().toString());
-		return "Auto_" + stimestamp;
-		} 
 
 	/**
 	 * Generate Three digit random number for Institution
+	 * 
 	 * @return
 	 * @throws ParseException
 	 */
@@ -296,11 +301,10 @@ public class Utilities {
 		// generate a random integer from 0 to 899, then add 100
 		int x = random.nextInt(900) + 100;
 		String RandomNum = Integer.toString(x);
-		return "Kims" +RandomNum;
+		return "Kims" + RandomNum;
 
 	}
 
-	
 	/**
 	 * Format date.
 	 *
