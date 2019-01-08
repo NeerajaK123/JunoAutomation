@@ -9,13 +9,9 @@ public class Excelmapping {
 	 */
 	public enum Login {
 
-		MI_SR_USERNAME("MI_SR_Username"),
-		PASSWORD("Password"),
-		APP("appToLaunch"), 
-		PCM_BA_USERNAME("PCM_BA_USERNAME"),
-		PCM_GLOBALMANAGER_USERNAME("PCM_GLOBALMANAGER_USERNAME"),
-		Deployment_Username("Deployment_Username"),
-		Deployment_Password("Deployment_Password");
+		ADMIN_USERNAME("ADMIN_Username"),
+		ADMIN_PASSWORD("ADMIN_Password");
+		
 
 		/** The value. */
 		private String value;
