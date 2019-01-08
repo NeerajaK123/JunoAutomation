@@ -97,23 +97,9 @@ public class LoginPage {
 		}
 	}
 /*
- * Method is to launch Med Connect
+ * Method is to select App from applauncher
  */
-	public void electra_launch(String Electra) throws InterruptedException {
-		try {
-			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			BaseTest.waitforElement(appLauncher, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			BaseTest.waitforElement(search_AppLauncher, Config.timeouts.MEDIUMWAIT.get()).click();
-			BaseTest.waitforElement(search_AppLauncher, Config.timeouts.MEDIUMWAIT.get()).sendKeys(Electra);	
-			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			BaseTest.waitforElement(driver.findElement(By.xpath("//mark[contains(text(),'" + Electra + "')]")), Config.timeouts.LONGWAIT.get()).click();
-			Thread.sleep(5000);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			Assert.fail();
-		}
-	}
+
 	public void appSelection_Applauncher(String app) throws InterruptedException {
 		try {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
