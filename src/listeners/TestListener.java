@@ -39,12 +39,14 @@ public class TestListener extends BaseTest implements ITestListener {
         System.out.println("I am in onTestStart method " +  getTestMethodName(iTestResult) + " start");
         //Start operation for extentreports.
         ExtentTestManager.startTest(iTestResult.getMethod().getMethodName(),"");
+        
     }
  
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         System.out.println("I am in onTestSuccess method " +  getTestMethodName(iTestResult) + " succeed");
         //Extentreports log operation for passed tests.
+        
         ExtentTestManager.getTest().log(LogStatus.PASS, "Test passed");
         ExtentTestManager.getTest().setDescription(iTestResult.getMethod().getDescription());
     }
@@ -65,7 +67,7 @@ public class TestListener extends BaseTest implements ITestListener {
         ExtentTestManager.getTest().log(LogStatus.FAIL,"Test Failed",
                 ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
         ExtentTestManager.getTest().setDescription(iTestResult.getMethod().getDescription());
-        webDriver.close();   
+        //webDriver.close();
     }
  
     @Override

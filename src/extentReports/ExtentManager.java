@@ -13,6 +13,8 @@ public class ExtentManager {
             //Set HTML reporting file location
             String workingDir = System.getProperty("user.dir");
             extent = new ExtentReports(workingDir+"\\ExtentReports\\ExtentReportResults.html", true);
+            extent.addSystemInfo("Browser", "Google Chrome");
+            extent.addSystemInfo("Browser Ver.", "Version 71.0.3578.80 (Official Build) (64-bit)");
         }
         return extent;
     }
