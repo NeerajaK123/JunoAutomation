@@ -58,6 +58,7 @@ public class LogoutPage {
 			BaseTest.waitforElement(linkLogout, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.SHORTWAIT.get());
 			logger.info("Logout is successfull");
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Logout is Successfull");
 			driver.close();
 			driver.quit();
 		} catch (Exception logoutissue) {

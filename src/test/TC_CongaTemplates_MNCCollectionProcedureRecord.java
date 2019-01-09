@@ -14,7 +14,7 @@ import resources.ExcelReader;
  *
  */
 
-public class TC_CongaTemplates_ProductOrder  extends BaseTest {
+public class TC_CongaTemplates_MNCCollectionProcedureRecord  extends BaseTest {
 
 	BaseTest baseTest;
 	ExcelReader excel;
@@ -26,13 +26,11 @@ public class TC_CongaTemplates_ProductOrder  extends BaseTest {
 	public String environmentURL;
 	public String applicationServerUrl;
 
-	public TC_CongaTemplates_ProductOrder() {
+	public TC_CongaTemplates_MNCCollectionProcedureRecord() {
 	}
 
-	
-	
 	@Test(description = "Logged In As Business Admin")
-	public void CongaTemplates_ProductOrder_Creation() {
+	public void CongaTemplates_MNCCollectionProcedureRecord_Creation() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
 			String sClassname = getClass().toString();
@@ -64,7 +62,7 @@ public class TC_CongaTemplates_ProductOrder  extends BaseTest {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
 		excel.RExcelWriter(Excelmapping.CongaTemplateCreation.CONGATEMPLATENAME.get(),Utilities.generateRandomNameWithTimestamp());
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_CongaTemplates_ProductOrder****");
+		System.out.println("*****Starting to execute: TC_CongaTemplates_MNCCollectionProcedureRecord****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
@@ -82,7 +80,7 @@ public class TC_CongaTemplates_ProductOrder  extends BaseTest {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.congaTemplatesPage.congaTemplates_ProductOrder(					
+			objbasetest.congaTemplatesPage.congaTemplates_MNCCollectionProcedureRecord(					
 					excel.RExcelReader(Excelmapping.CongaTemplateCreation.CONGATEMPLATENAME.get()));
 			} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -101,7 +99,7 @@ public class TC_CongaTemplates_ProductOrder  extends BaseTest {
 		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println("*****Ending to execute: TC_CongaTemplates_ProductOrder*****");
+			System.out.println("*****Ending to execute: TC_CongaTemplates_MNCCollectionProcedureRecord*****");
 		}
 	}
 }

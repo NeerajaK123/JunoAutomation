@@ -53,6 +53,15 @@ public class CongaTemplatesPage {
 	
 	@FindBy(xpath = "//li[@role='presentation']/a[@title='Treatment(Actual)']")
 	public WebElement PickList_object_Treatment_Actual;
+	
+	@FindBy(xpath = "//li[@role='presentation']/a[@title='Product Order']")
+	public WebElement PickList_object_Product_Order;
+	
+	@FindBy(xpath = "//li[@role='presentation']/a[@title='Shipment Authorization']")
+	public WebElement PickList_object_Shipment_Authorization;
+	
+	@FindBy(xpath = "//li[@role='presentation']/a[@title='MNC Collection Procedure Record']")
+	public WebElement PickList_object_MNC_Collection_Procedure_Record;	
 
 	@FindBy(xpath = "//a[contains(text(),'--None--')]")
 	public WebElement PickList_Group;
@@ -92,8 +101,7 @@ public class CongaTemplatesPage {
 	 */
 
 	public void congaTemplates_ActualTreatment(String Name) {
-		try {
-			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+		try {			
 			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.waitforElement(input_CongaTemplateName, Config.timeouts.LONGWAIT.get()).sendKeys(Name);
@@ -131,13 +139,12 @@ public class CongaTemplatesPage {
 	 */
 
 	public void congaTemplates_ProductOrder(String Name) {
-		try {
-			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+		try {			
 			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.waitforElement(input_CongaTemplateName, Config.timeouts.LONGWAIT.get()).sendKeys(Name);
 			BaseTest.waitforElement(PickList_object, Config.timeouts.LONGWAIT.get()).click();
-			PickList_object_Treatment_Actual.click();
+			PickList_object_Product_Order.click();
 			BaseTest.waitforElement(PickList_Group, Config.timeouts.LONGWAIT.get()).click();			
 			PickList_Group_ScheduleConfirmationForm.click();
 			BaseTest.waitforElement(Chkbx_ActiveConga, Config.timeouts.LONGWAIT.get()).click();
@@ -156,7 +163,7 @@ public class CongaTemplatesPage {
 			String congaTemplate = driver.findElement(By.xpath(
 					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template Treatment(Actual) name is : " + congaTemplate);
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template Product Order name is : " + congaTemplate);
 						
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -170,13 +177,12 @@ public class CongaTemplatesPage {
 	 */
 
 	public void congaTemplates_ShipmentAuthorisation(String Name) {
-		try {
-			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+		try {			
 			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.waitforElement(input_CongaTemplateName, Config.timeouts.LONGWAIT.get()).sendKeys(Name);
 			BaseTest.waitforElement(PickList_object, Config.timeouts.LONGWAIT.get()).click();
-			PickList_object_Treatment_Actual.click();
+			PickList_object_Shipment_Authorization.click();
 			BaseTest.waitforElement(PickList_Group, Config.timeouts.LONGWAIT.get()).click();			
 			PickList_Group_ScheduleConfirmationForm.click();
 			BaseTest.waitforElement(Chkbx_ActiveConga, Config.timeouts.LONGWAIT.get()).click();
@@ -195,7 +201,45 @@ public class CongaTemplatesPage {
 			String congaTemplate = driver.findElement(By.xpath(
 					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template Treatment(Actual) name is : " + congaTemplate);
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template Shipment Authorization name is : " + congaTemplate);
+						
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e.getMessage());
+			Assert.fail();			
+		}
+	}
+	
+	/* This method covers creation of Conga Templates -> ObjectType_MNCCollectionProcedureRecord
+	 */
+
+	public void congaTemplates_MNCCollectionProcedureRecord(String Name) {
+		try {			
+			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(input_CongaTemplateName, Config.timeouts.LONGWAIT.get()).sendKeys(Name);
+			BaseTest.waitforElement(PickList_object, Config.timeouts.LONGWAIT.get()).click();
+			PickList_object_MNC_Collection_Procedure_Record.click();
+			BaseTest.waitforElement(PickList_Group, Config.timeouts.LONGWAIT.get()).click();			
+			PickList_Group_ScheduleConfirmationForm.click();
+			BaseTest.waitforElement(Chkbx_ActiveConga, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(span_Country, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_MoveselectiontoChosen, Config.timeouts.LONGWAIT.get()).click();			
+			BaseTest.waitforElement(PickList_Status, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(PickList_Status);
+			BaseTest.pleasewait(Config.timeouts.SHORTWAIT.get());
+			BaseTest.waitforElement(PickList_Status, Config.timeouts.LONGWAIT.get()).click();
+			PickList_Status_Approved.click();			
+			BaseTest.waitforElement(Chkbx_ContinueConga, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_Save_CongaTemplate, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(txt_CongaTemplate, Config.timeouts.LONGWAIT.get());		
+			Assert.assertTrue(txt_CongaTemplate.isDisplayed());
+			String congaTemplate = driver.findElement(By.xpath(
+					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template MNC Collection Procedure Record name is : " + congaTemplate);
 						
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

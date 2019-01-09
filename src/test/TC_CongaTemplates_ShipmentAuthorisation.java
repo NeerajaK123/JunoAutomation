@@ -28,6 +28,8 @@ public class TC_CongaTemplates_ShipmentAuthorisation  extends BaseTest {
 
 	public TC_CongaTemplates_ShipmentAuthorisation() {
 	}
+	
+	
 
 	@Test(description = "Logged In As Business Admin")
 	public void CongaTemplates_ShipmentAuthorisation_Creation() {
