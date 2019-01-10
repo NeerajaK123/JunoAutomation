@@ -59,8 +59,8 @@ public class TC_NonPrescriber extends BaseTest {
 	public void step01(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
 
-		excel.RExcelWriter(Excelmapping.DataCreation.NonPrescriber.get(), Utilities.generateRandomNameWithTimestamp());
-		excel.RExcelWriter(Excelmapping.DataCreation.Organisation.get(), Utilities.generateRandomNameWithTimestamp());
+		excel.RExcelWriter(Excelmapping.DataCreation.NonPrescriber.get(), Utilities.generateNonPrescriberWithTimestamp());
+		excel.RExcelWriter(Excelmapping.DataCreation.Organisation.get(), Utilities.generateOrgNameWithTimestamp());
 
 		baseTest = new BaseTest(environmentURL, strBrowser);
 		System.out.println("*****Starting to execute: TC_NonPrescriber****");

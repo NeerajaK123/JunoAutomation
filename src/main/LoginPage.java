@@ -86,6 +86,8 @@ public class LoginPage {
 			BaseTest.waitforElement(passWord, Config.timeouts.SHORTWAIT.get()).sendKeys(passwd);
 			BaseTest.waitforElement(loginButton, Config.timeouts.SHORTWAIT.get()).click();				
 			logger.info("Login is Successfull");
+			
+			
 								
 		} catch (AssertionError e) {
 			System.out.println(e.getMessage());
