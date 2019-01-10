@@ -272,6 +272,33 @@ public class Utilities {
 		String stimestamp = timestamp(formatsysDate().toString());
 		return "Auto_" + stimestamp;
 	}
+	
+	public static String generateDeptNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_Dept_" + stimestamp;
+	}
+	
+	public static String generateNonPrescriberWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_NonPresc_" + stimestamp;
+	}
+	
+	public static String generateOrgNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_Org_" + stimestamp;
+	}
+	public static String generateProdNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_Prdct_" + stimestamp;
+	}
+	public static String generateSiteNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_Site_" + stimestamp;
+	}
+	public static String generateProtocolNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_Prtcl_" + stimestamp;
+	}
 
 	/**
 	 * Generate Three digit random number with timestamp
