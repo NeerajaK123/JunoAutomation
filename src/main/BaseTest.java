@@ -50,6 +50,8 @@ public class BaseTest {
 	public JAMSAccount JAMSAccount;
 
 	public CongaTemplatesPage congaTemplatesPage;
+	
+	public PatientsPage patientsPage;
 
 	public static WebDriver driver;
 	
@@ -163,7 +165,7 @@ public class BaseTest {
 		logoutPage = new LogoutPage(driver);
 		JAMSAccount = new JAMSAccount(driver) ;
 		congaTemplatesPage = new CongaTemplatesPage(driver);
-
+		patientsPage = new PatientsPage(driver);
 		
 		
 	}
@@ -176,7 +178,7 @@ public class BaseTest {
 		logoutPage = new LogoutPage(driver);
 		JAMSAccount = new JAMSAccount(driver) ;
 		congaTemplatesPage = new CongaTemplatesPage(driver);
-
+		patientsPage = new PatientsPage(driver);
 		
 
 	}

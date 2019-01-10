@@ -109,11 +109,11 @@ public class LoginPage {
  */
 
 	public void appSelection_Applauncher(String app) throws InterruptedException {
-		try {
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Login is Successfull");
+		try {				
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(appLauncher, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			
 			BaseTest.waitforElement(search_AppLauncher, Config.timeouts.MEDIUMWAIT.get()).click();
 			BaseTest.waitforElement(search_AppLauncher, Config.timeouts.MEDIUMWAIT.get()).sendKeys(app);	
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());

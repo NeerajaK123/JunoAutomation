@@ -3,6 +3,9 @@ package test;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
+import extentReports.ExtentTestManager;
 import main.BaseTest;
 import main.Config;
 import main.Excelmapping;
@@ -66,8 +69,10 @@ public class TC_CongaTemplates_ShipmentAuthorisation  extends BaseTest {
 		baseTest = new BaseTest(environmentURL, strBrowser);
 		System.out.println("*****Starting to execute: TC_CongaTemplates_ShipmentAuthorisation****");
 		try {
-			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
-					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
+			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.SUPER_USERNAME.get()),
+					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Login as Super User is successful");
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUCH.get()));
 			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUNCHER.get())); 
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
@@ -98,7 +103,7 @@ public class TC_CongaTemplates_ShipmentAuthorisation  extends BaseTest {
 		try {
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			baseTest.logoutPage.logout();
-		
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Logout as Super User is successful");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println("*****Ending to execute: TC_CongaTemplates_ShipmentAuthorisation*****");

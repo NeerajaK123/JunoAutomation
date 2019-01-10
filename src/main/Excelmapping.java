@@ -11,7 +11,7 @@ public class Excelmapping {
 	 */
 	public enum Login {
 
-		ADMIN_USERNAME("ADMIN_Username"), ADMIN_PASSWORD("ADMIN_Password"), APP_LAUNCHER("App");
+		ADMIN_USERNAME("ADMIN_Username"), ADMIN_PASSWORD("ADMIN_Password"),SUPER_USERNAME("Super_Username"), SUPER_PASSWORD("Super_Password"), APP_LAUCH("App_J"),APP_LAUNCHER("App");
 
 		/** The value. */
 		private String value;
@@ -90,6 +90,27 @@ public class Excelmapping {
 			return value;
 		}
 	}
+	
+	public enum PatientEnrollmentCreation {
+
+		FNAME("FName"),
+		LNAME("LName"),		
+		SUBJECTNUM("SubjectNum"),
+		ENROLLMENTNUM("EnrollmentNum"),
+		USERNAME("ADMIN_Username"),
+		PASSWORD("ADMIN_Password");
+		private String value;
+
+		private PatientEnrollmentCreation(String value) {
+			this.value = value;
+		}
+
+		public String get() {
+			return value;
+		}
+	}
+	
+	
 
 	public enum DataCreation {
 
