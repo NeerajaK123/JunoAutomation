@@ -297,9 +297,23 @@ public class Utilities {
 	}
 	public static String generateProtocolNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
+		
 		return "A_Prtcl_" + stimestamp;
 	}
+	public static String generateApheresisNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_Aph_" + stimestamp;
+	}
 
+	public static String generateManufacturingSiteNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_MS_" + stimestamp;
+	}
+	
+	public static String generatePVNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_PV_" + stimestamp;
+	}
 	/**
 	 * Generate Three digit random number with timestamp
 	 * 

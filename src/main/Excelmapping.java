@@ -114,9 +114,23 @@ public class Excelmapping {
 
 	public enum DataCreation {
 
-		NonPrescriber("NonPrescriber"), Organisation("Organisation"), Site("Site"), Address("Address"), City(
-				"City"), App_JAMS("App_JAMS"), APP_JUPTR("APP_JUPTR"), Department("Department"), APP_Product(
-						"APP_Product"), Product("Product"), APP_Protocols("APP_Protocols"), Protocol("Protocol");
+		NonPrescriber("NonPrescriber"),
+		Organisation("Organisation"),
+		Site("Site"),
+		Address("Address"), 
+		City("City"), 
+		App_JAMS("App_JAMS"), 
+		APP_JUPTR("APP_JUPTR"),
+		Department("Department"), 
+		APP_Product("APP_Product"),
+		Product("Product"),
+		APP_Protocols("APP_Protocols"),
+		Protocol("Protocol"),
+		Apheresis("Apheresis"),
+		OnboardingTemplate("OnboardingTemplate"),
+		ManufacturingSite("ManufacturingSite"),
+		ProductVersion("ProductVersion"),
+		APP_ProductVersion("APP_Protocols");
 
 		/** The value. */
 		private String value;

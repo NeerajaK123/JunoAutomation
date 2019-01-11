@@ -60,7 +60,7 @@ public class TC_ApheresisCreation extends BaseTest {
 	 */
 	public void step01(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
-		excel.RExcelWriter(Excelmapping.DataCreation.Site.get(), Utilities.generateSiteNameWithTimestamp());
+		excel.RExcelWriter(Excelmapping.DataCreation.Apheresis.get(), Utilities.generateApheresisNameWithTimestamp());
 		baseTest = new BaseTest(environmentURL, strBrowser);
 		System.out.println("*****Starting to execute: TC_ApheresisCreation****");
 		try {
@@ -81,10 +81,13 @@ public class TC_ApheresisCreation extends BaseTest {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.JAMSAccount.siteCreation(excel.RExcelReader(Excelmapping.DataCreation.Site.get()),
+			objbasetest.JAMSAccount.apheresisCreation(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()),
 					excel.RExcelReader(Excelmapping.DataCreation.Address.get()),
 					excel.RExcelReader(Excelmapping.DataCreation.City.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()));
+					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Site.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.OnboardingTemplate.get()));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
@@ -127,8 +130,10 @@ public class TC_ApheresisCreation extends BaseTest {
 	public void step05() throws Exception {
 		try {
 			BaseTest objbasetest = new BaseTest();
-			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.Site.get()));
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());			
+			objbasetest.JAMSAccount.approvingOnboarding_APH(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()));
+			objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()));
+		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
