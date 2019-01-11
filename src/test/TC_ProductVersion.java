@@ -10,7 +10,7 @@ import main.Excelmapping;
 import main.Utilities;
 import resources.ExcelReader;
 
-public class TC_DepartmentCreation extends BaseTest {
+public class TC_ProductVersion extends BaseTest {
 
 	BaseTest baseTest;
 	ExcelReader excel;
@@ -22,11 +22,11 @@ public class TC_DepartmentCreation extends BaseTest {
 	public String environmentURL;
 	public String applicationServerUrl;
 
-	public TC_DepartmentCreation() {
+	public TC_ProductVersion() {
 	}
 
-	@Test(description ="Creation Of Department")
-	public void DepartmentCreation() {
+	@Test(description = "Creation of ProductVersion")
+	public void ProductVersion() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
 			String sClassname = getClass().toString();
@@ -59,14 +59,15 @@ public class TC_DepartmentCreation extends BaseTest {
 	 */
 	public void step01(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
-		excel.RExcelWriter(Excelmapping.DataCreation.Department.get(), Utilities.generateRandomNameWithTimestamp());
+		excel.RExcelWriter(Excelmapping.DataCreation.ProductVersion.get(), Utilities.generatePVNameWithTimestamp());
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_DepartmentCreation****");
+		System.out.println("*****Starting to execute: TC_ProductVersion****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.SUPER_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Login as super user is Successfull");			
-			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUNCHER.get()));
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Login as super user is Successfull");
+			baseTest.loginPage
+					.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_ProductVersion.get()));
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}
@@ -80,15 +81,15 @@ public class TC_DepartmentCreation extends BaseTest {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.JAMSAccount.departmentCreation(excel.RExcelReader(Excelmapping.DataCreation.Department.get()),excel.RExcelReader(Excelmapping.DataCreation.Site.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.Address.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.City.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()));
+			objbasetest.JAMSAccount.protocolCreation(excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Product.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Site.get()));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
 		}
 	}
+
 	/**
 	 * Step 03 Logout
 	 */
@@ -97,12 +98,12 @@ public class TC_DepartmentCreation extends BaseTest {
 		try {
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			baseTest.logoutPage.logout();
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Log out as super user is Successfull");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Logged out as super user is Successfull");
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-			System.out.println("*****Ending to execute: TC_DepartmentCreation*****");
+			System.out.println("*****Ending to execute: TC_ProductVersion*****");
 		}
 	}
 
@@ -112,12 +113,12 @@ public class TC_DepartmentCreation extends BaseTest {
 	public void step04(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_DepartmentCreation****");
+		System.out.println("*****Starting to execute: TC_ProductVersion****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
-			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.App_JAMS.get()));
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Log in as Admin for approval is Successfull");
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Logged in as Admin for approval is Successfull");
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}
@@ -127,7 +128,7 @@ public class TC_DepartmentCreation extends BaseTest {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.Department.get()));
+			objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.APP_ProductVersion.get()));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
@@ -138,11 +139,11 @@ public class TC_DepartmentCreation extends BaseTest {
 		try {
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			baseTest.logoutPage.logout();
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Log out as Admin is Successfull");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Logged out as Admin is Successfull");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-			System.out.println("*****Ending to execute: TC_DepartmentCreation*****");
+			System.out.println("*****Ending to execute: TC_ProductVersion*****");
 		}
 	}
 }
