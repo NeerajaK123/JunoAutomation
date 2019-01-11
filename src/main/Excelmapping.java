@@ -11,7 +11,8 @@ public class Excelmapping {
 	 */
 	public enum Login {
 
-		ADMIN_USERNAME("ADMIN_Username"), ADMIN_PASSWORD("ADMIN_Password"),SUPER_USERNAME("Super_Username"), SUPER_PASSWORD("Super_Password"), APP_LAUCH("App_J"),APP_LAUNCHER("App");
+		ADMIN_USERNAME("ADMIN_Username"), ADMIN_PASSWORD("ADMIN_Password"),SUPER_USERNAME("Super_Username"), SUPER_PASSWORD("Super_Password"), APP_LAUCH("App_J"),APP_LAUNCHER("App")
+		,APP_TREATMENTS("App_Treatments"),APP_ENROLLMENTS("App_Enrollments");
 
 		/** The value. */
 		private String value;

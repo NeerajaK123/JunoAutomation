@@ -34,7 +34,7 @@ public class TC_CongaTemplates_ProductOrder  extends BaseTest {
 
 	
 	
-	@Test(description = "Logged In As Business Admin")
+	@Test(description ="Creation Of Conga Template of object type ProductOrder")
 	public void CongaTemplates_ProductOrder_Creation() {
 		try {
 			BaseTest objbaseTest = new BaseTest();

@@ -25,7 +25,7 @@ public class TC_DepartmentCreation extends BaseTest {
 	public TC_DepartmentCreation() {
 	}
 
-	@Test(description = "Creation of Department")
+	@Test(description ="Creation Of Department")
 	public void DepartmentCreation() {
 		try {
 			BaseTest objbaseTest = new BaseTest();

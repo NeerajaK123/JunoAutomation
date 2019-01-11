@@ -32,7 +32,7 @@ public class TC_CongaTemplates_ActualTreatment  extends BaseTest {
 	public TC_CongaTemplates_ActualTreatment() {
 	}
 
-	@Test(description = "Logged In As Super User and Business Admin")
+	@Test(description ="Creation Of Conga Template of object type ActualTreatment")
 	public void CongaTemplates_ActualTreatment_Creation() {
 		try {
 			BaseTest objbaseTest = new BaseTest();

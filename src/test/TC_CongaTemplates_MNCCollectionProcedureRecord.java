@@ -32,7 +32,7 @@ public class TC_CongaTemplates_MNCCollectionProcedureRecord  extends BaseTest {
 	public TC_CongaTemplates_MNCCollectionProcedureRecord() {
 	}
 
-	@Test(description = "Logged In As Business Admin")
+	@Test(description ="Creation Of Conga Template of object type MNCCollectionProcedureRecord")
 	public void CongaTemplates_MNCCollectionProcedureRecord_Creation() {
 		try {
 			BaseTest objbaseTest = new BaseTest();

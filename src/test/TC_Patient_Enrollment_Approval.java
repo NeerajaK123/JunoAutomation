@@ -32,7 +32,7 @@ public class TC_Patient_Enrollment_Approval  extends BaseTest {
 	public TC_Patient_Enrollment_Approval() {
 	}
 
-	@Test(description = "Logged In As Super User and Business Admin")
+	@Test(description ="Creation Of Patient , Enrollment and Aprroval")
 	public void Patient_Enrollment_Approval_Creation_Approval() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
@@ -67,6 +67,7 @@ public class TC_Patient_Enrollment_Approval  extends BaseTest {
 	public void step01(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
 		excel.RExcelWriter(Excelmapping.PatientEnrollmentCreation.LNAME.get(),Utilities.generateRandomNameWithTimestamp());
+		
 		baseTest = new BaseTest(environmentURL, strBrowser);
 		System.out.println("*****Starting to execute: TC_Patient_Enrollment_Approval****");
 		try {

@@ -270,7 +270,7 @@ public class Utilities {
 	 */
 	public static String generateRandomNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "Auto_" + stimestamp;
+		return "A" + stimestamp;
 	}
 	
 	public static String generateDeptNameWithTimestamp() throws ParseException {

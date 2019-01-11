@@ -171,7 +171,7 @@ public class PatientsPage {
 			enrollment = driver.findElement(By.xpath(
 					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Patient Enrollment number is : " + enrollment);	
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Patient Enrollment name is : " + enrollment);	
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

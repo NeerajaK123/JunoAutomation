@@ -17,7 +17,7 @@ import resources.ExcelReader;
  *
  */
 
-public class TC_CongaTemplates_ShipmentAuthorisation  extends BaseTest {
+public class TC_ActualTreatment_ProductOrder  extends BaseTest {
 
 	BaseTest baseTest;
 	ExcelReader excel;
@@ -29,13 +29,11 @@ public class TC_CongaTemplates_ShipmentAuthorisation  extends BaseTest {
 	public String environmentURL;
 	public String applicationServerUrl;
 
-	public TC_CongaTemplates_ShipmentAuthorisation() {
+	public TC_ActualTreatment_ProductOrder() {
 	}
-	
-	
 
-	@Test(description ="Creation Of Conga Template of object type ShipmentAuthorisation")
-	public void CongaTemplates_ShipmentAuthorisation_Creation() {
+	@Test(description ="Creation Of Actual Treatment and Product Order")
+	public void CreationOfActualTreatmentAndProductOrder() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
 			String sClassname = getClass().toString();
@@ -54,41 +52,40 @@ public class TC_CongaTemplates_ShipmentAuthorisation  extends BaseTest {
 		try {
 			step01(browser);
 			step02();
-			step03();
+			step03();			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
  
 	/**
-	 * Step 01. Login
+	 * Step 01. Login with Super User
 	 */
 	public void step01(String strBrowser) throws Exception {
-		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
-		excel.RExcelWriter(Excelmapping.CongaTemplateCreation.CONGATEMPLATENAME.get(),Utilities.generateRandomNameWithTimestamp());
+		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);		
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_CongaTemplates_ShipmentAuthorisation****");
+		System.out.println("*****Starting to execute: TC_ActualTreatment_ProductOrder****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.SUPER_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
 			ExtentTestManager.getTest().log(LogStatus.INFO,"Login as Super User is successful");
 			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUCH.get()));
-			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUNCHER.get())); 
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_ENROLLMENTS.get())); 
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}
 	}
 
 	/**
-	 * Step 02. Case Contact Creation
+	 * Step 02. Case Actual Treatment and Product Order 
 	 */
 
 	public void step02() throws Exception {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.congaTemplatesPage.congaTemplates_ShipmentAuthorisation(					
-					excel.RExcelReader(Excelmapping.CongaTemplateCreation.CONGATEMPLATENAME.get()));
+		    objbasetest.treatmentsPage.actualTreatment_ProductOrder(										
+					excel.RExcelReader(Excelmapping.PatientEnrollmentCreation.ENROLLMENTNUM.get()));		
 			} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
@@ -96,7 +93,7 @@ public class TC_CongaTemplates_ShipmentAuthorisation  extends BaseTest {
 	}
 
 	/**
-	 * Step 03 Logout
+	 * Step 03 Logout With Super User
 	 */
 
 	public void step03() throws Exception {
@@ -106,7 +103,7 @@ public class TC_CongaTemplates_ShipmentAuthorisation  extends BaseTest {
 			ExtentTestManager.getTest().log(LogStatus.INFO,"Logout as Super User is successful");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println("*****Ending to execute: TC_CongaTemplates_ShipmentAuthorisation*****");
+			System.out.println("*****Ending to execute: TC_ActualTreatment_ProductOrder*****");
 		}
 	}
 }
