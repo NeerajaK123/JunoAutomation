@@ -17,7 +17,7 @@ import resources.ExcelReader;
  *
  */
 
-public class TC_ActualTreatment_ProductOrder  extends BaseTest {
+public class TC_ActualTreatment_ChangeReason_ProductOrder  extends BaseTest {
 
 	BaseTest baseTest;
 	ExcelReader excel;
@@ -29,11 +29,11 @@ public class TC_ActualTreatment_ProductOrder  extends BaseTest {
 	public String environmentURL;
 	public String applicationServerUrl;
 
-	public TC_ActualTreatment_ProductOrder() {
+	public TC_ActualTreatment_ChangeReason_ProductOrder() {
 	}
 
-	@Test(description ="Creation Of Actual Treatment and Product Order")
-	public void CreationOfActualTreatmentAndProductOrder() {
+	@Test(description ="Creation Of Actual Treatment, Treatment change reason and Product Order")
+	public void CreationOfActualTreatment_ChangeReasonAndProductOrder() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
 			String sClassname = getClass().toString();
@@ -84,7 +84,7 @@ public class TC_ActualTreatment_ProductOrder  extends BaseTest {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-		    objbasetest.treatmentsPage.actualTreatment_ProductOrder(										
+		    objbasetest.treatmentsPage.actualTreatment_ChangeReason_ProductOrder(										
 					excel.RExcelReader(Excelmapping.PatientEnrollmentCreation.ENROLLMENTNUM.get()));		
 			} catch (Exception e) {
 			System.out.println(e.getMessage());

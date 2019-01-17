@@ -96,6 +96,43 @@ public class TreatmentsPage {
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Product Order']")
 	public WebElement txt_ProductOrder;	
 	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Product Order Status']")
+	public WebElement txt_ProductOrderStaus_Scheduling;	
+	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[text()='Confirm']")
+	public WebElement btn_Confirm;	
+	
+	@FindBy(xpath = "//button[text()='Confirm']")
+	public WebElement btn_Confirm1;
+	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[text()='Edit']")
+	public WebElement btn_Edit;	
+	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Edit Product Order']")
+	public WebElement txt_EditProductOrder;	
+	
+	@FindBy(xpath = "(//input[@name='actualDPPackageDate'])[1]")
+	public WebElement datepicker_actualDPPackageDate;
+	
+	@FindBy(xpath = "(//input[@name='actualDPPickupDate'])[1]")
+	public WebElement datepicker_actualDPPickupDate;	
+	
+	@FindBy(xpath = "(//input[@name='actualDPDeliveryDate'])[1]")
+	public WebElement datepicker_actualDPDeliveryDate;
+	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[@class='slds-grid slds-grid--vertical-align-center slds-grid--align-center sldsButtonHeightFix']//lightning-icon")
+	public WebElement btn_Moreoptions;
+	
+	@FindBy(xpath = "//a[@title='Cancel Product Order']")
+	public WebElement link_CancelProductOrder;
+	
+	@FindBy(xpath = "//h4[text()='Error']")
+	public WebElement txt_Error;
+	
+	@FindBy(xpath = "//button[@title='Close this window']")
+	public WebElement btn_Closethiswindow;
+	
+	
 	
 	@FindBy(xpath = "//li[@class='slds-button slds-button--neutral slds-truncate']/a[@title='New']")
 	public WebElement Btn_New;	
@@ -151,6 +188,18 @@ public class TreatmentsPage {
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Treatment']")
 	public WebElement txt_Treatment;	
 	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Edit Treatment']")
+	public WebElement txt_EditTreatment;
+	
+	@FindBy(xpath = "(//input[@name='MFGDelivery'])[1]")
+	public WebElement date_MFGDelivery;
+	
+	@FindBy(xpath = "//div[@class='slds-form-element__control slds-grow']//select[@name='reasonForChange']")
+	public WebElement select_reasonForChange;
+	
+	@FindBy(xpath = "//div[@class='slds-form-element__control slds-grow']//select[@name='CauseOfChange']")
+	public WebElement select_CauseOfChange;
+	
 	@FindBy(xpath = "//a[@class='slds-grid slds-grid--vertical-align-center slds-grid--align-center sldsButtonHeightFix']//lightning-icon[@class='slds-button__icon slds-icon-utility-down slds-icon_container forceIcon']//lightning-primitive-icon")
 	public WebElement btn_showmore;
 	
@@ -170,9 +219,9 @@ public class TreatmentsPage {
 	 */
 	
 	
-	/* This method covers creation of Actual treatment and Product order
+	/* This method covers creation of Actual treatment, Change Reason and Product order
 	 */
-	public void actualTreatment_ProductOrder(String EnrollmentNum) {
+	public void actualTreatment_ChangeReason_ProductOrder(String EnrollmentNum) {
 		try {			
 			BaseTest.waitforElement(conbobx_Search, Config.timeouts.LONGWAIT.get()).sendKeys(EnrollmentNum);
 			BaseTest.waitforElement(conbobx_Search, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
@@ -182,10 +231,11 @@ public class TreatmentsPage {
 			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(link_Treatments, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
-			BaseTest.waitforElement(btn_NewActualTreatment, Config.timeouts.LONGWAIT.get()).click();				
-			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());			
+			BaseTest.waitforElement(btn_NewActualTreatment, Config.timeouts.LONGWAIT.get()).click();			
+		    BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+            BaseTest.waitforElement(iframe, Config.timeouts.LONGWAIT.get());
             driver.switchTo().frame(iframe);
-			BaseTest.waitforElement(txt_NewActualTreatment, Config.timeouts.LONGWAIT.get());
+            BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.waitforElement(txt_NewActualTreatment, Config.timeouts.LONGWAIT.get()).click();		
 			BaseTest.scrolldowntoVisibility(select_apheresisCenter);			
 			Utilities.selectfromdropdownwebelement(select_apheresisCenter,"AutomationApheresis");
@@ -220,6 +270,20 @@ public class TreatmentsPage {
 					.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO,"Auto Assigned JOIN is : " + Join);
 			
+			BaseTest.waitforElement(btn_Edit, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_EditTreatment, Config.timeouts.LONGWAIT.get()).click();				
+			BaseTest.waitforElement(date_MFGDelivery, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(datepicker_NextMonth, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(datepicker_day, Config.timeouts.LONGWAIT.get()).click();
+			Utilities.selectfromdropdownwebelement(select_reasonForChange,"Scheduling Conflict");
+			Utilities.selectfromdropdownwebelement(select_CauseOfChange,"Courier");			
+			BaseTest.waitforElement(btn_Save, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());		
+			Assert.assertTrue(txt_Treatment.isDisplayed());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Treatment change reason is performed");
+			
 			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(link_ProductOrders, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
@@ -228,7 +292,7 @@ public class TreatmentsPage {
 			driver.switchTo().frame(iframe);
 			BaseTest.waitforElement(select_department, Config.timeouts.LONGWAIT.get());
 			BaseTest.scrolldowntoVisibility(select_department);
-			Utilities.selectfromdropdownwebelement(select_department,"AutomationDepartment");
+			Utilities.selectfromdropdownwebelement(select_department,"001m000000ozcm6AAA");
 			Utilities.selectfromdropdownwebelement(select_deliveryAddress,"a01m000000HCw6mAAD");
 			Utilities.selectfromdropdownwebelement(select_deliveryContact,"003m0000017QlLhAAK");
 			Utilities.selectfromdropdownwebelement(select_manufacturingSite,"AutomationManufacturingSite");
@@ -248,9 +312,84 @@ public class TreatmentsPage {
 			BaseTest.waitforElement(txt_ProductOrder, Config.timeouts.LONGWAIT.get());		
 			Assert.assertTrue(txt_ProductOrder.isDisplayed());
 			String ProductOrder = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Product Order name is : " + ProductOrder);			
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Product Order name is : " + ProductOrder);	
+			Assert.assertTrue(txt_ProductOrderStaus_Scheduling.isDisplayed());
+			String ProductOrderStaus = driver.findElement(By.xpath(
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Product Order Status']//parent::div//following-sibling::div//span//span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Product Order Status is : " + ProductOrderStaus);
+			BaseTest.waitforElement(btn_Confirm, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_Confirm1, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_ProductOrderStaus_Scheduling, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(txt_ProductOrderStaus_Scheduling);
+			Assert.assertTrue(txt_ProductOrderStaus_Scheduling.isDisplayed());
+			String ProductOrderStausConfirm = driver.findElement(By.xpath(
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Product Order Status']//parent::div//following-sibling::div//span//span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Product Order Status after confirm is : " + ProductOrderStausConfirm);
+			
+			BaseTest.waitforElement(btn_Edit, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_EditProductOrder, Config.timeouts.LONGWAIT.get()).click();			
+			
+			BaseTest.waitforElement(datepicker_actualDPPackageDate, Config.timeouts.LONGWAIT.get()).click();
+			btn_Today.click();
+			BaseTest.waitforElement(btn_Save, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_ProductOrderStaus_Scheduling, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(txt_ProductOrderStaus_Scheduling);
+			Assert.assertTrue(txt_ProductOrderStaus_Scheduling.isDisplayed());
+			String ProductOrderStausPakaged = driver.findElement(By.xpath(
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Product Order Status']//parent::div//following-sibling::div//span//span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Product Order Status after Changing Actual DP Packaging Date is :" + ProductOrderStausPakaged);
+			
+			BaseTest.waitforElement(btn_Edit, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(select_manufacturingSite, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(select_manufacturingSite);
+			BaseTest.waitforElement(datepicker_actualDPPickupDate, Config.timeouts.LONGWAIT.get()).click();
+			btn_Today.click();
+			BaseTest.waitforElement(btn_Save, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_ProductOrderStaus_Scheduling, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(txt_ProductOrderStaus_Scheduling);
+			Assert.assertTrue(txt_ProductOrderStaus_Scheduling.isDisplayed());
+			String ProductOrderStausDPTrans = driver.findElement(By.xpath(
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Product Order Status']//parent::div//following-sibling::div//span//span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Product Order Status after Changing Actual DP Pickup Date is : " + ProductOrderStausDPTrans);
+			
+			
+			BaseTest.waitforElement(btn_Edit, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(select_manufacturingSite, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(select_manufacturingSite);
+			BaseTest.waitforElement(datepicker_actualDPDeliveryDate, Config.timeouts.LONGWAIT.get()).click();
+			btn_Today.click();
+			BaseTest.waitforElement(btn_Save, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_ProductOrderStaus_Scheduling, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(txt_ProductOrderStaus_Scheduling);
+			Assert.assertTrue(txt_ProductOrderStaus_Scheduling.isDisplayed());
+			String ProductOrderStausDPDelivered = driver.findElement(By.xpath(
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Product Order Status']//parent::div//following-sibling::div//span//span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Product Order Status after Changing Actual DP Delivery Date is : " + ProductOrderStausDPDelivered);
+			
+			BaseTest.waitforElement(btn_Moreoptions, Config.timeouts.LONGWAIT.get()).click();			
+			BaseTest.waitforElement(link_CancelProductOrder, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			Assert.assertTrue(txt_Error.isDisplayed());
+			String ProductOrderCancelled = driver.findElement(By.xpath(
+					"//div[@class='bBody']"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"When Product Order is cancelled the following Error message is displayed : " + ProductOrderCancelled);
+			BaseTest.waitforElement(btn_Closethiswindow, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			logger.info("The exception is : " + e.getMessage());

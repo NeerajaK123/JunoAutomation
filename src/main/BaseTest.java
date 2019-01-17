@@ -55,6 +55,8 @@ public class BaseTest {
 	public PatientsPage patientsPage;
 	
 	public TreatmentsPage treatmentsPage;
+	
+	public ManufacturingScheduleConfigurationPage manufacturingScheduleConfigurationPage;
 
 	public static WebDriver driver;
 	
@@ -170,7 +172,7 @@ public class BaseTest {
 		congaTemplatesPage = new CongaTemplatesPage(driver);
 		patientsPage = new PatientsPage(driver);
 		treatmentsPage = new TreatmentsPage(driver);
-	
+		manufacturingScheduleConfigurationPage = new ManufacturingScheduleConfigurationPage(driver);
 		
 		
 	}
@@ -185,6 +187,7 @@ public class BaseTest {
 		congaTemplatesPage = new CongaTemplatesPage(driver);
 		patientsPage = new PatientsPage(driver);
 		treatmentsPage = new TreatmentsPage(driver);
+		manufacturingScheduleConfigurationPage = new ManufacturingScheduleConfigurationPage(driver);
 	}
 
 	/**
