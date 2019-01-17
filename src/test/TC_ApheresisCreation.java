@@ -132,6 +132,7 @@ public class TC_ApheresisCreation extends BaseTest {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());			
 			objbasetest.JAMSAccount.approvingOnboarding_APH(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()));
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()));
 		
 		} catch (Exception e) {

@@ -130,8 +130,12 @@ public class Excelmapping {
 		Apheresis("Apheresis"),
 		OnboardingTemplate("OnboardingTemplate"),
 		ManufacturingSite("ManufacturingSite"),
-		ProductVersion("ProductVersion"),
-		APP_ProductVersion("APP_Protocols");
+		ProductVersionAutoJoin("ProductVersionAutoJoin"),
+		APP_ProductVersion("APP_ProductVersion"),
+		App_Doselevel("App_DL"),
+		App_DoseSchedule("App_DS"),
+		DoseLevel("DoseLevel"),
+		DoseSchedule("DoseSchedule");
 
 		/** The value. */
 		private String value;

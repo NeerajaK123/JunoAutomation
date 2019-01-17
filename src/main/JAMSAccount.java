@@ -68,20 +68,19 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//input[@title='Search Products']")
 	public WebElement Lookup_Products;
-	
+
 	@FindBy(xpath = "//li[@class='lookup__item  default uiAutocompleteOption forceSearchInputLookupDesktopOption']")
 	public WebElement Lkup_accountSite_result;
-		
+
 	@FindBy(xpath = "//span[contains(text(),'Actual Treatment Auto Assign')]/ancestor::label/following-sibling::input")
 	public WebElement ChkBox_ActualTreatmentAutoAssign;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Reservation Treatment Auto Assign')]/ancestor::label/following-sibling::input")
 	public WebElement ChkBox_ReservationTreatmentAutoAssign;
-	
-	
+
 	@FindBy(xpath = "(//span[contains(text(),'Account Assignments')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
 	public WebElement Btn_New_SiteAccountAssignmnet_Protocol;
-			
+
 	@FindBy(xpath = "//span[@title='New Account']")
 	public WebElement Btn_NewPrimaryParentAccount_contact;
 
@@ -93,11 +92,22 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//span[contains(text(),'Product Name')]/ancestor::label/following-sibling::input")
 	public WebElement TxtBox_ProductName;
-	
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Protocol Name')]/ancestor::label/following-sibling::input")
 	public WebElement TxtBox_ProtocolName;
-	
+
+	@FindBy(xpath = "//span[contains(text(),'Product Version Name')]/ancestor::label/following-sibling::input")
+	public WebElement TxtBox_ProductversionName;
+
+	@FindBy(xpath = "//span[contains(text(),'Dose Level Name')]/ancestor::label/following-sibling::input")
+	public WebElement TxtBox_DoseLevelName;
+
+	@FindBy(xpath = "//span[contains(text(),'Dose Schedule Name')]/ancestor::label/following-sibling::input")
+	public WebElement TxtBox_DoseScheduleName;
+
+	@FindBy(xpath = "//span[contains(text(),'Product Version ID')]/ancestor::label/following-sibling::input")
+	public WebElement TxtBox_ProductversionID;
+
 	@FindBy(xpath = "//span[contains(text(),'Country')]/ancestor::span/following-sibling::div/div/div/div/a[contains(text(),'--None--')]")
 	public WebElement Picklist_country_organisation;
 
@@ -106,7 +116,6 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//span[contains(text(),'Email')]/ancestor::div[@class='uiInput uiInputEmail uiInput--default uiInput--input']/input")
 	public WebElement txtbox_EmailManSite;
-	
 
 	@FindBy(xpath = "//span[contains(text(),'Account Status')]/ancestor::span/following-sibling::div/div/div/div/a[contains(text(),'Draft')]")
 	public WebElement Picklist_AccountStatus;
@@ -134,13 +143,12 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//div[contains(text(),'Provider Site profile for commercial and clinical')]")
 	public WebElement Radiobtn_Site;
-	
+
 	@FindBy(xpath = "//div[contains(text(),'Apheresis Center profile for collection, commercial, clinical, and healthy donor')]")
 	public WebElement Radiobtn_Apheresis;
-	
+
 	@FindBy(xpath = "//div[contains(text(),'Juno Manufacturing Sites')]")
 	public WebElement Radiobtn_ManufacturingSite;
-	
 
 	@FindBy(xpath = "//span[contains(text(),'Account Name')]/ancestor::label/following-sibling::input")
 	public WebElement TxtBox_AccountName_Site;
@@ -168,10 +176,6 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//span[contains(text(),'Active')]/ancestor::label/following-sibling::input")
 	public WebElement ChckBox_Active;
-	
-	@FindBy(xpath = "//span[contains(text(),'Product Version ID')]/ancestor::label/following-sibling::input")
-	public WebElement txtbox_PVid;
-	
 
 	@FindBy(xpath = "//div[@class='forceModalActionContainer--footerAction forceModalActionContainer']/button[3]/span[contains(text(),'Save')]")
 	public WebElement Btn_SaveAddress;
@@ -217,9 +221,36 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//tbody/tr/th/span/a")
 	public WebElement globalsearchResult;
-	
+
 	@FindBy(xpath = "(//span[contains(text(),'Protocol Assignments')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
 	public WebElement btn_New_PPV;
+
+	@FindBy(xpath = "(//span[contains(text(),'Dose Levels')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
+	public WebElement btn_New_DL;
+
+	@FindBy(xpath = "//span[contains(text(),'Total Cell Amount (10^6)')]/ancestor::label/following-sibling::input")
+	public WebElement TxtBox_TotalcellAmount;
+
+	@FindBy(xpath = "//span[contains(text(),'Target Dose Amount (10^6)')]/ancestor::label/following-sibling::input")
+	public WebElement TxtBox_TargetDoseAmount;
+
+	@FindBy(xpath = "(//a[@class='datePicker-openIcon display'])[1]")
+	public WebElement datePicker_Effective_Start_DL;
+
+	@FindBy(xpath = "//span[@class='today slds-show--inline-block slds-text-link slds-p-bottom--x-small']")
+	public WebElement Effective_Start_today;
+
+	@FindBy(xpath = "(//a[@class='datePicker-openIcon display'])[2]")
+	public WebElement datePicker_Effective_End_DL;
+
+	@FindBy(xpath = "//a[@title='Go to next month']")
+	public WebElement Effective_EndDate_NextMonth_Arrow;
+
+	@FindBy(xpath = "(//td[@class='uiDayInMonthCell'])[15]")
+	public WebElement Effective_EndDate_Fifteenthday_NextMonth;
+
+	@FindBy(xpath = "(//span[contains(text(),'Dose Schedules')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
+	public WebElement btn_New_DS;
 
 	@FindBy(xpath = "//a[@title='Related']")
 	public WebElement tab_Related;
@@ -244,76 +275,76 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//span[contains(text(),'Protocol Type')]/ancestor::span[@class='label inputLabel uiPicklistLabel-left form-element__label uiPicklistLabel']/following-sibling::div//div/a[contains(text(),'--None--')]")
 	public WebElement Select_ProtocolType_None;
-	
+
 	@FindBy(xpath = "//li[@role='presentation']//a[@title='Adults']")
 	public WebElement Select_ProtocolType_Adults;
-	
+
 	@FindBy(xpath = "(//span[contains(text(),'Protocol Assignments')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
 	public WebElement btn_NewProtocolAssignment;
-	
+
 	@FindBy(xpath = "(//span[contains(text(),'Child Accounts')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
 	public WebElement btn_NewChildAccountAssignment;
-	
+
 	@FindBy(xpath = "(//span[contains(text(),'Affiliated Sites')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
 	public WebElement btn_NewAffiliatedSiteAssignment;
-		
+
 	@FindBy(xpath = "//input[@title='Search Protocols']")
 	public WebElement Search_Protocols;
-	
+
 	@FindBy(xpath = "//div[contains(@title,'A_Prtcl')]")
 	public WebElement Search_ProtocolsResult;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Specification Number')]/ancestor::label[@class='label inputLabel uiLabel-left form-element__label uiLabel']/following-sibling::input")
 	public WebElement txtbox_SpecificationNumber;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Collection Description')]/ancestor::label[@class='label inputLabel uiLabel-left form-element__label uiLabel']/following-sibling::input")
-	public WebElement txtbox_CollectionDescription;	
-	
+	public WebElement txtbox_CollectionDescription;
+
 	@FindBy(xpath = "//span[contains(text(),'Actual Treatment Channel')]/ancestor::span[@class='label inputLabel uiPicklistLabel-left form-element__label uiPicklistLabel']/following-sibling::div/div/div/div/a")
-	public WebElement dd_ATChannel;	
-	
+	public WebElement dd_ATChannel;
+
 	@FindBy(xpath = "//li[@role='presentation']//a[@title='Clinical']")
 	public WebElement ATChanel_Clinical;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Actual Treatment JOIN Prefix')]/ancestor::label[@class='label inputLabel uiLabel-left form-element__label uiLabel']/following-sibling::input")
 	public WebElement txtbox_ATJoinPrefix;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Reservation Treatment JOIN Prefix')]/ancestor::label[@class='label inputLabel uiLabel-left form-element__label uiLabel']/following-sibling::input")
 	public WebElement txtbox_RTJoinPrefix;
-	
-	
-	
-	
+
 	@FindBy(xpath = "//a[@title='Show 2 more actions']")
 	public WebElement Accordion_Apheresis_Showmore;
-	
+
 	@FindBy(xpath = "//div[contains(text(),'Active Onboarding Templates')]")
 	public WebElement tab_ActiveOnboardingTemplate;
-		
+
 	@FindBy(xpath = "//li[@role='presentation']/a[@title='Onboard']")
 	public WebElement Lnk_Onboard;
-			
+
 	@FindBy(xpath = "//div[@class='modal-footer slds-modal__footer slds-size_1-of-1']/button[contains(text(),'Submit')]")
-	public WebElement submit_Onboard;	
-	
+	public WebElement submit_Onboard;
+
 	@FindBy(xpath = "//a[contains(text(),'OB-')]")
 	public WebElement hyperlnk_OnboardingID;
-	
+
+	@FindBy(xpath = "//a[contains(text(),'PPV-')]")
+	public WebElement hyperlnk_PPVID;
+
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@title='Edit']")
 	public WebElement btn_EditOnboardingID;
-		
+
 	@FindBy(xpath = "//a[contains(text(),'Draft')]")
 	public WebElement lkup_draft;
-	
+
 	@FindBy(xpath = "//li[@role='presentation']//a[@title='Verified']")
 	public WebElement lkupresult_verifed;
-	
+
 	@FindBy(xpath = "(//ul[@class='slds-listbox slds-listbox_vertical']/li[@role='presentation']//span[@title='Study specific PA'])[2]")
 	public WebElement selectContractType;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Contract Type')]//ancestor::div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow slds-hint-parent override--slds-form-element']/div[2]/button/lightning-primitive-icon")
 	public WebElement editPen_ContractType;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Save')]")
 	public WebElement btnSave_onb;
 	/*
@@ -420,7 +451,6 @@ public class JAMSAccount {
 			BaseTest.waitforElement(ChckBox_Primary, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			BaseTest.scrolldown(100);
 			BaseTest.waitforElement(driver.findElement(By.xpath("//a[contains(text(),'" + Address + "')]")),
 					Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(driver.findElement(By.xpath("//a[contains(text(),'" + Address + "')]")).isDisplayed());
@@ -434,6 +464,7 @@ public class JAMSAccount {
 
 	public void relatedContactCreation(String NonPrescriber) {
 		try {
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(Btn_AddRelationShip_contact, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Lkup_contact, Config.timeouts.LONGWAIT.get()).sendKeys(NonPrescriber);
 			BaseTest.waitforElement(Lkup_contact_result, Config.timeouts.LONGWAIT.get()).click();
@@ -454,11 +485,12 @@ public class JAMSAccount {
 			Assert.fail();
 		}
 	}
-	
-	public void relatedProtocolAssignment(String Protocol)
-	{
+
+	public void relatedProtocolAssignment(String Protocol) {
 		try {
-			BaseTest.waitforElement(btn_NewProtocolAssignment, Config.timeouts.LONGWAIT.get()).click();;
+			BaseTest.scrolldown(80);
+			BaseTest.waitforElement(btn_NewProtocolAssignment, Config.timeouts.LONGWAIT.get()).click();
+			;
 			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
 			BaseTest.waitforElement(Search_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
@@ -470,64 +502,92 @@ public class JAMSAccount {
 		}
 	}
 
-	public void Onboarding_APH(String onboardingTemplate)
-	{
-	try {
-		BaseTest.waitforElement(Accordion_Apheresis_Showmore, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(Lnk_Onboard, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(tab_ActiveOnboardingTemplate, Config.timeouts.LONGWAIT.get());
-		WebElement onboarding = driver.findElement(By.xpath("//span[contains(text(),'"+onboardingTemplate+"')]"));
-		BaseTest.waitforElement(onboarding, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(submit_Onboard, Config.timeouts.LONGWAIT.get()).click();
-	} catch (Exception e) {
-		System.out.println(e.getMessage());
-		logger.info("The exception is : " + e.getMessage());
-		ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-		Assert.fail();
-	}
-	}
-	
-	public void approvingOnboarding_APH(String Apheresis)
-	{
-	try {
-		BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-		BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Apheresis);
-		BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
-		BaseTest.waitforElement(globalsearchResult, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.scrolldown(100);		
-		BaseTest.waitforElement(hyperlnk_OnboardingID, Config.timeouts.LONGWAIT.get()).click();		
-		BaseTest.waitforElement(editPen_ContractType, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(chooseOption, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.scrollup(200);
-		BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(lkupresult_verifed, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(btnSave_onb, Config.timeouts.LONGWAIT.get()).click();
-		
-		
-		/*
-		BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(hyperlnk_OnboardingID, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(btn_EditOnboardingID, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(lkupresult_verifed, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.scrolldown(100);
-		BaseTest.waitforElement(selectContractType, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(chooseOption, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();	*/
-		
-	} catch (Exception e) {
-		System.out.println(e.getMessage());
-		logger.info("The exception is : " + e.getMessage());
-		ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-		Assert.fail();
-	}
-	}
-	
-	
-	public void relatedAffiliatedSiteAssignment(String Site)
-	{
+	public void Onboarding_APH(String onboardingTemplate) {
 		try {
-			
+			BaseTest.waitforElement(Accordion_Apheresis_Showmore, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Lnk_Onboard, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(tab_ActiveOnboardingTemplate, Config.timeouts.LONGWAIT.get());
+			WebElement onboarding = driver
+					.findElement(By.xpath("//span[contains(text(),'" + onboardingTemplate + "')]"));
+			BaseTest.waitforElement(onboarding, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(submit_Onboard, Config.timeouts.LONGWAIT.get()).click();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
+	}
+
+	public void approvingOnboarding_APH(String Apheresis) {
+		try {
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Apheresis);
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.waitforElement(globalsearchResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.scrolldown(100);
+			BaseTest.waitforElement(hyperlnk_OnboardingID, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(editPen_ContractType, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(chooseOption, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.scrollup(200);
+			BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Picklist_Approve, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btnSave_onb, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			/*
+			 * BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
+			 * BaseTest.waitforElement(hyperlnk_OnboardingID,
+			 * Config.timeouts.LONGWAIT.get()).click();
+			 * BaseTest.waitforElement(btn_EditOnboardingID,
+			 * Config.timeouts.LONGWAIT.get()).click(); BaseTest.waitforElement(lkup_draft,
+			 * Config.timeouts.LONGWAIT.get()).click();
+			 * BaseTest.waitforElement(lkupresult_verifed,
+			 * Config.timeouts.LONGWAIT.get()).click(); BaseTest.scrolldown(100);
+			 * BaseTest.waitforElement(selectContractType,
+			 * Config.timeouts.LONGWAIT.get()).click();
+			 * BaseTest.waitforElement(chooseOption,
+			 * Config.timeouts.LONGWAIT.get()).click();
+			 * BaseTest.waitforElement(Btn_SaveAddress,
+			 * Config.timeouts.LONGWAIT.get()).click();
+			 */
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
+
+	}
+
+	public void approvingPPV_PV(String ProductVersion) {
+		try {
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(ProductVersion);
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.waitforElement(globalsearchResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.scrolldown(100);
+			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(hyperlnk_PPVID, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(btn_EditOnboardingID, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Picklist_Approve, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
+
+	}
+
+	public void relatedAffiliatedSiteAssignment(String Site) {
+		try {
+
 			BaseTest.waitforElement(btn_NewAffiliatedSiteAssignment, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Lookup_PrimaryParent, Config.timeouts.LONGWAIT.get()).sendKeys(Site);
 			BaseTest.waitforElement(Lkup_accountSite_result, Config.timeouts.LONGWAIT.get()).click();
@@ -603,7 +663,7 @@ public class JAMSAccount {
 	}
 
 	public void productCreation(String Product) {
-		
+
 		try {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
@@ -636,14 +696,13 @@ public class JAMSAccount {
 		}
 
 	}
-	
-	public void protocolCreation(String Protocol,String Product,String Site)
-	{
-				try {
+
+	public void protocolCreation(String Protocol, String Product, String Site) {
+		try {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.waitforElement(TxtBox_ProtocolName, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);	
+			BaseTest.waitforElement(TxtBox_ProtocolName, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
 			BaseTest.waitforElement(ChckBox_Active, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Select_ProtocolType_None, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Select_ProtocolType_Adults, Config.timeouts.LONGWAIT.get()).click();
@@ -654,7 +713,7 @@ public class JAMSAccount {
 			BaseTest.waitforElement(Lookup_PrimaryParent, Config.timeouts.LONGWAIT.get()).sendKeys(Site);
 			BaseTest.waitforElement(Lkup_accountSite_result, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());		
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(driver.findElement(By.xpath(
 					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span")),
 					Config.timeouts.LONGWAIT.get());
@@ -668,7 +727,7 @@ public class JAMSAccount {
 			BaseTest.scrollup(150);
 			BaseTest.waitforElement(JuptrStatus_PendingApproval, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(JuptrStatus_PendingApproval.isDisplayed(), "Product status is not pending approval");
-				
+
 		} catch (InterruptedException e) {
 			System.out.println(e.getMessage());
 			logger.info("The exception is : " + e.getMessage());
@@ -676,105 +735,106 @@ public class JAMSAccount {
 			Assert.fail();
 		}
 	}
-public void apheresisCreation(String Apheresis,String Address, String city, String NonPrescriber,String Protocol,String Site,String onboardingTemplate)
-{
-	try {
-		BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-		BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(Radiobtn_Apheresis, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(TxtBox_AccountName, Config.timeouts.LONGWAIT.get()).sendKeys(Apheresis);
-		BaseTest.waitforElement(Picklist_country_organisation, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(Picklist_country_Albania, Config.timeouts.LONGWAIT.get()).click();		
-		BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-		BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
-		Assert.assertTrue(CreatedAccount.isDisplayed());
-		String ApheresisCreated = driver.findElement(By.xpath(
-				"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
-				.getText();
-		System.out.print("Created Apheresis is : " + ApheresisCreated);
-		ExtentTestManager.getTest().log(LogStatus.INFO, "Created Apheresis is : " + ApheresisCreated);
-		addressCreation(Address, city);
-		BaseTest.scrolldowntoVisibility(Btn_Address_site);
-		relatedContactCreation(NonPrescriber);
-		relatedProtocolAssignment(Protocol);
-		BaseTest.scrolldown(200);
-		BaseTest.scrolldowntoVisibility(btn_NewProtocolAssignment);
-		relatedAffiliatedSiteAssignment(Site);
-		BaseTest.scrollup(800);
-		Onboarding_APH(onboardingTemplate);
-		BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-		BaseTest.waitforElement(Btn_SubmitForApproval, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(btn_Submit, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.scrollup(300);
-		BaseTest.waitforElement(Status_PendingApproval, Config.timeouts.LONGWAIT.get());
-		Assert.assertTrue(Status_PendingApproval.isDisplayed(), "Apheresis status is not pending approval");
-				
-	} catch (InterruptedException e) {
-		System.out.println(e.getMessage());
-		logger.info("The exception is : " + e.getMessage());
-		ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-		Assert.fail();
-	}
-}
 
-	public void manufacturingSiteCreation(String manufacturingSite,String Address,String city,String NonPrescriber,String Site)
-	{
-	try {
-		BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-		BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(Radiobtn_ManufacturingSite, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(TxtBox_AccountName, Config.timeouts.LONGWAIT.get()).sendKeys(manufacturingSite);
-		BaseTest.waitforElement(Picklist_country_organisation, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(Picklist_country_Albania, Config.timeouts.LONGWAIT.get()).click();	
-		BaseTest.waitforElement(txtbox_EmailManSite, Config.timeouts.LONGWAIT.get()).sendKeys("abc@def.com");
-		BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-		BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
-		Assert.assertTrue(CreatedAccount.isDisplayed());
-		String manufacturingSiteCreated = driver.findElement(By.xpath(
-				"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
-				.getText();
-		System.out.print("Created manufacturingSite is : " + manufacturingSiteCreated);
-		ExtentTestManager.getTest().log(LogStatus.INFO, "Created manufacturingSite is : " + manufacturingSiteCreated);
-		addressCreation(Address, city);
-		BaseTest.scrolldowntoVisibility(Btn_Address_site);
-		relatedContactCreation(NonPrescriber);	
-		relatedAffiliatedSiteAssignment(Site);
-		BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-		BaseTest.waitforElement(Btn_SubmitForApproval, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(btn_Submit, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.scrollup(500);
-		BaseTest.waitforElement(Status_PendingApproval, Config.timeouts.LONGWAIT.get());
-		Assert.assertTrue(Status_PendingApproval.isDisplayed(), "Manufacturing site status is not pending approval");
-	
-	} catch (InterruptedException e) {
-		System.out.println(e.getMessage());
-		logger.info("The exception is : " + e.getMessage());
-		ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-		Assert.fail();
+	public void apheresisCreation(String Apheresis, String Address, String city, String NonPrescriber, String Protocol,
+			String Site, String onboardingTemplate) {
+		try {
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Radiobtn_Apheresis, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(TxtBox_AccountName, Config.timeouts.LONGWAIT.get()).sendKeys(Apheresis);
+			BaseTest.waitforElement(Picklist_country_organisation, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Picklist_country_Albania, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
+			Assert.assertTrue(CreatedAccount.isDisplayed());
+			String ApheresisCreated = driver.findElement(By.xpath(
+					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					.getText();
+			System.out.print("Created Apheresis is : " + ApheresisCreated);
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Apheresis is : " + ApheresisCreated);
+			addressCreation(Address, city);
+			BaseTest.scrolldowntoVisibility(Btn_Address_site);
+			relatedContactCreation(NonPrescriber);
+			relatedProtocolAssignment(Protocol);
+			BaseTest.scrolldown(200);
+			BaseTest.scrolldowntoVisibility(btn_NewProtocolAssignment);
+			relatedAffiliatedSiteAssignment(Site);
+			BaseTest.scrollup(800);
+			Onboarding_APH(onboardingTemplate);
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(Btn_SubmitForApproval, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_Submit, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.scrollup(300);
+			BaseTest.waitforElement(Status_PendingApproval, Config.timeouts.LONGWAIT.get());
+			Assert.assertTrue(Status_PendingApproval.isDisplayed(), "Apheresis status is not pending approval");
+
+		} catch (InterruptedException e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
 	}
+
+	public void manufacturingSiteCreation(String manufacturingSite, String Address, String city, String NonPrescriber,
+			String Site) {
+		try {
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Radiobtn_ManufacturingSite, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(TxtBox_AccountName, Config.timeouts.LONGWAIT.get()).sendKeys(manufacturingSite);
+			BaseTest.waitforElement(Picklist_country_organisation, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Picklist_country_Albania, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(txtbox_EmailManSite, Config.timeouts.LONGWAIT.get()).sendKeys("abc@def.com");
+			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
+			Assert.assertTrue(CreatedAccount.isDisplayed());
+			String manufacturingSiteCreated = driver.findElement(By.xpath(
+					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					.getText();
+			System.out.print("Created manufacturingSite is : " + manufacturingSiteCreated);
+			ExtentTestManager.getTest().log(LogStatus.INFO,
+					"Created manufacturingSite is : " + manufacturingSiteCreated);
+			addressCreation(Address, city);
+			BaseTest.scrolldowntoVisibility(Btn_Address_site);
+			relatedContactCreation(NonPrescriber);
+			relatedAffiliatedSiteAssignment(Site);
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(Btn_SubmitForApproval, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_Submit, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.scrollup(500);
+			BaseTest.waitforElement(Status_PendingApproval, Config.timeouts.LONGWAIT.get());
+			Assert.assertTrue(Status_PendingApproval.isDisplayed(),
+					"Manufacturing site status is not pending approval");
+
+		} catch (InterruptedException e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
 	}
-	
-	public void productversion(String ProductVersion,String Product,String Protocol)
-	{
+
+	public void productversion_AutoJoin(String ProductVersion, String Product, String Protocol) {
+
 		try {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.waitforElement(TxtBox_ProtocolName, Config.timeouts.LONGWAIT.get()).sendKeys(ProductVersion);	
+			BaseTest.waitforElement(TxtBox_ProductversionName, Config.timeouts.LONGWAIT.get()).sendKeys(ProductVersion);
+			BaseTest.waitforElement(TxtBox_ProductversionID, Config.timeouts.LONGWAIT.get()).sendKeys("123");
 			BaseTest.waitforElement(ChckBox_Active, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.waitforElement(txtbox_PVid, Config.timeouts.LONGWAIT.get()).sendKeys("1234");
 			BaseTest.waitforElement(Lookup_Products, Config.timeouts.LONGWAIT.get()).sendKeys(Product);
 			BaseTest.waitforElement(Lkup_accountSite_result, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(ChkBox_ActualTreatmentAutoAssign, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(ChkBox_ReservationTreatmentAutoAssign, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
-			Assert.assertTrue(CreatedAccount.isDisplayed());
 			String productversionCreated = driver.findElement(By.xpath(
 					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
@@ -782,9 +842,14 @@ public void apheresisCreation(String Apheresis,String Address, String city, Stri
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created productversion is : " + productversionCreated);
 			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
 			protocolproductversion(Protocol);
-			doseLevelCreation();
-			doseScheduleCreation();
-			
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(Btn_SubmitForApproval, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_ProductSubmit, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.scrollup(500);
+			BaseTest.waitforElement(JuptrStatus_PendingApproval, Config.timeouts.LONGWAIT.get());
+			Assert.assertTrue(JuptrStatus_PendingApproval.isDisplayed(),
+					"Product version status is not pending approval");
+
 		} catch (InterruptedException e) {
 			System.out.println(e.getMessage());
 			logger.info("The exception is : " + e.getMessage());
@@ -792,34 +857,92 @@ public void apheresisCreation(String Apheresis,String Address, String city, Stri
 			Assert.fail();
 		}
 	}
-	
-public void protocolproductversion(String Protocol)
-{
-	try {
-		BaseTest.waitforElement(btn_New_PPV, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
-		BaseTest.waitforElement(Search_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(txtbox_SpecificationNumber, Config.timeouts.LONGWAIT.get()).sendKeys("123");
-		BaseTest.waitforElement(txtbox_CollectionDescription, Config.timeouts.LONGWAIT.get()).sendKeys("TestAutoDescription");
-		BaseTest.waitforElement(dd_ATChannel, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(ATChanel_Clinical, Config.timeouts.LONGWAIT.get()).click();
-		BaseTest.waitforElement(txtbox_ATJoinPrefix, Config.timeouts.LONGWAIT.get()).sendKeys("A");
-		BaseTest.waitforElement(txtbox_RTJoinPrefix, Config.timeouts.LONGWAIT.get()).sendKeys("R");
-		BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
-	} catch (Exception e) {
-		System.out.println(e.getMessage());
-		logger.info("The exception is : " + e.getMessage());
-		ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-		Assert.fail();
-	}
-}
-public void doseLevelCreation()
-{
-	
-}
 
-public void doseScheduleCreation()
-{
-	
-}
+	public void protocolproductversion(String Protocol) {
+		try {
+			BaseTest.waitforElement(btn_New_PPV, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
+			BaseTest.waitforElement(Search_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(txtbox_SpecificationNumber, Config.timeouts.LONGWAIT.get()).sendKeys("123");
+			BaseTest.waitforElement(txtbox_CollectionDescription, Config.timeouts.LONGWAIT.get())
+					.sendKeys("TestAutoDescription");
+			BaseTest.waitforElement(dd_ATChannel, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(ATChanel_Clinical, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(txtbox_ATJoinPrefix, Config.timeouts.LONGWAIT.get()).sendKeys("A");
+			BaseTest.waitforElement(txtbox_RTJoinPrefix, Config.timeouts.LONGWAIT.get()).sendKeys("R");
+			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
+	}
+
+	public void doseLevelCreation(String DoseLevel, String ProductVersion, String Protocol) {
+		try {
+
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(ProductVersion);
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			Thread.sleep(3000);
+			WebElement pvaj = driver.findElement(By.xpath("(//a[contains(@title,'A_PVAJ')])[2]"));
+			BaseTest.waitforElement(pvaj, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_New_DL, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(TxtBox_DoseLevelName, Config.timeouts.LONGWAIT.get()).sendKeys(DoseLevel);
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Dose Level is : " + DoseLevel);
+			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
+			BaseTest.waitforElement(Search_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(ChckBox_Active, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Picklist_Approve, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(TxtBox_TotalcellAmount, Config.timeouts.LONGWAIT.get()).sendKeys("1");
+			BaseTest.waitforElement(TxtBox_TargetDoseAmount, Config.timeouts.LONGWAIT.get()).sendKeys("2");
+			BaseTest.waitforElement(datePicker_Effective_Start_DL, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Effective_Start_today, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(datePicker_Effective_End_DL, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Effective_EndDate_NextMonth_Arrow, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Effective_EndDate_Fifteenthday_NextMonth, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
+
+	}
+
+	public void doseScheduleCreation(String ProductVersion, String DoseSchedule, String Protocol) {
+		try {
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(ProductVersion);
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			Thread.sleep(3000);
+			WebElement pvaj = driver.findElement(By.xpath("(//a[contains(@title,'A_PVAJ')])[2]"));
+			BaseTest.waitforElement(pvaj, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_New_DS, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(TxtBox_DoseScheduleName, Config.timeouts.LONGWAIT.get()).sendKeys(DoseSchedule);
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Dose Schedule is : " + DoseSchedule);
+			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
+			BaseTest.waitforElement(Search_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(ChckBox_Active, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Picklist_Approve, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+
+		} catch (InterruptedException e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
+	}
 }
