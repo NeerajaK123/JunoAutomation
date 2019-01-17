@@ -10,7 +10,7 @@ import main.Excelmapping;
 import main.Utilities;
 import resources.ExcelReader;
 
-public class TC_ProductVersion extends BaseTest {
+public class TC_ProductVersion_JoinAutoAssign_DL_DS extends BaseTest {
 
 	BaseTest baseTest;
 	ExcelReader excel;
@@ -22,11 +22,11 @@ public class TC_ProductVersion extends BaseTest {
 	public String environmentURL;
 	public String applicationServerUrl;
 
-	public TC_ProductVersion() {
+	public TC_ProductVersion_JoinAutoAssign_DL_DS() {
 	}
 
-	@Test(description = "Creation of ProductVersion")
-	public void ProductVersion() {
+	@Test(description = "Creation of ProductVersion with join Auto Assign and DL,DS")
+	public void ProductVersion_JoinAutoAssign_DL_DS() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
 			String sClassname = getClass().toString();
@@ -59,9 +59,14 @@ public class TC_ProductVersion extends BaseTest {
 	 */
 	public void step01(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
-		excel.RExcelWriter(Excelmapping.DataCreation.ProductVersion.get(), Utilities.generatePVNameWithTimestamp());
+		excel.RExcelWriter(Excelmapping.DataCreation.ProductVersionAutoJoin.get(),
+				Utilities.generatePVNameWithTimestamp());
+		 excel.RExcelWriter(Excelmapping.DataCreation.DoseLevel.get(),
+		 Utilities.generateDLNameWithTimestamp());
+		 excel.RExcelWriter(Excelmapping.DataCreation.DoseSchedule.get(),
+		 Utilities.generateDSNameWithTimestamp());
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_ProductVersion****");
+		System.out.println("*****Starting to execute: TC_ProductVersion_JoinAutoAssign_DL_DS****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.SUPER_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
@@ -81,9 +86,10 @@ public class TC_ProductVersion extends BaseTest {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.JAMSAccount.protocolCreation(excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()),
+			objbasetest.JAMSAccount.productversion_AutoJoin(
+					excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()),
 					excel.RExcelReader(Excelmapping.DataCreation.Product.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.Site.get()));
+					excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
@@ -103,7 +109,7 @@ public class TC_ProductVersion extends BaseTest {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-			System.out.println("*****Ending to execute: TC_ProductVersion*****");
+			System.out.println("*****Ending to execute: TC_ProductVersion_JoinAutoAssign_DL_DS*****");
 		}
 	}
 
@@ -113,7 +119,7 @@ public class TC_ProductVersion extends BaseTest {
 	public void step04(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_ProductVersion****");
+		System.out.println("*****Starting to execute: TC_ProductVersion_JoinAutoAssign_DL_DS****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
@@ -128,7 +134,13 @@ public class TC_ProductVersion extends BaseTest {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.APP_ProductVersion.get()));
+			objbasetest.JAMSAccount.approvingPPV_PV(excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()));
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()));
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			objbasetest.JAMSAccount.doseLevelCreation(excel.RExcelReader(Excelmapping.DataCreation.DoseLevel.get()),excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()),excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()));
+			objbasetest.JAMSAccount.doseScheduleCreation(excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()),excel.RExcelReader(Excelmapping.DataCreation.DoseSchedule.get()),excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()));
+		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
@@ -143,7 +155,7 @@ public class TC_ProductVersion extends BaseTest {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-			System.out.println("*****Ending to execute: TC_ProductVersion*****");
+			System.out.println("*****Ending to execute: TC_ProductVersion_JoinAutoAssign_DL_DS*****");
 		}
 	}
 }

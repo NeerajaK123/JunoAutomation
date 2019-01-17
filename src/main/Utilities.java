@@ -312,7 +312,17 @@ public class Utilities {
 	
 	public static String generatePVNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_PV_" + stimestamp;
+		return "A_PVAJ_" + stimestamp;
+	}
+	
+	public static String generateDLNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_DL_" + stimestamp;
+	}
+	
+	public static String generateDSNameWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_DS_" + stimestamp;
 	}
 	/**
 	 * Generate Three digit random number with timestamp
