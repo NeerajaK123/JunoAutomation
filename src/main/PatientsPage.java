@@ -137,7 +137,7 @@ public class PatientsPage {
 	/* This method covers creation Patient and Enrollment
 	 */
 
-	public String patient_Enrollment_Creation(String FName, String LName,String SubjectNum) {
+	public String patient_Enrollment_Creation(String FName, String LName,String SubjectNum,String Protocol,String Site,String NonPrescriber) {
 		try {			
 			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());			
@@ -149,9 +149,9 @@ public class PatientsPage {
 			BaseTest.scrolldowntoVisibility(select_EnrollmentType);
 			Utilities.selectfromdropdownwebelement(select_EnrollmentType,"Clinical");
 			BaseTest.waitforElement(txtbx_SubjectNum, Config.timeouts.LONGWAIT.get()).sendKeys(SubjectNum);
-			Utilities.selectfromdropdownwebelement(select_Protocol,"AutomationProtocol");
-			Utilities.selectfromdropdownwebelement(select_SiteOfCare,"AutomationSite");
-			Utilities.selectfromdropdownwebelement(select_primaryContact,"Automatin_NonPrescriber");
+			Utilities.selectfromdropdownwebelement(select_Protocol,Protocol);
+			Utilities.selectfromdropdownwebelement(select_SiteOfCare,Site);
+			Utilities.selectfromdropdownwebelement(select_primaryContact,NonPrescriber);
 			BaseTest.waitforElement(Chkbx_Verify, Config.timeouts.LONGWAIT.get());
 			BaseTest.scrolldowntoVisibility(Chkbx_Verify);
 			BaseTest.waitforElement(Chkbx_Verify, Config.timeouts.LONGWAIT.get()).click();
@@ -186,7 +186,7 @@ public class PatientsPage {
 	/* This method covers patient, Enrollment Approval
 	 */
 
-	public void patient_Enrollment_Approval(String FName, String LName,String SubjectNum, String EnrollmentNum, String Username, String Password) {
+	public void patient_Enrollment_Approval(String FName, String LName,String SubjectNum, String EnrollmentNum, String Username, String Password,String Protocol) {
 		try {			
 			BaseTest.waitforElement(combobx_GlobalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(EnrollmentNum);
 			BaseTest.waitforElement(combobx_GlobalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
@@ -202,7 +202,7 @@ public class PatientsPage {
 			BaseTest.waitforElement(txtbx_SubjectNum_Verify, Config.timeouts.LONGWAIT.get());
 			BaseTest.scrolldowntoVisibility(txtbx_SubjectNum_Verify);			
 			BaseTest.waitforElement(txtbx_SubjectNum_Verify, Config.timeouts.LONGWAIT.get()).sendKeys(SubjectNum);			
-			Utilities.selectfromdropdownwebelement(select_Protocol,"AutomationProtocol");			
+			Utilities.selectfromdropdownwebelement(select_Protocol,Protocol);			
 			BaseTest.waitforElement(btn_Verify_Enroll, Config.timeouts.LONGWAIT.get()).click();	
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.waitforElement(txtbx_Username, Config.timeouts.LONGWAIT.get()).sendKeys(Username);	

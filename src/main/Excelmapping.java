@@ -135,7 +135,8 @@ public class Excelmapping {
 		App_Doselevel("App_DL"),
 		App_DoseSchedule("App_DS"),
 		DoseLevel("DoseLevel"),
-		DoseSchedule("DoseSchedule");
+		DoseSchedule("DoseSchedule"),
+		APP_LAUNCHER("App");
 
 		/** The value. */
 		private String value;

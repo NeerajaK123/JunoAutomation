@@ -353,7 +353,7 @@ public class JAMSAccount {
 
 	public void contactCreation(String Nonprescriber, String Organisation) {
 		try {
-			BaseTest.waitforElement(tab_Account, Config.timeouts.LONGWAIT.get()).click();
+			//BaseTest.waitforElement(tab_Account, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Radiobtn_NonPrescriber, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
