@@ -33,7 +33,7 @@ public class TC_Patient_Enrollment_Approval extends BaseTest {
 	}
 
 	@Test(description = "Creation Of Patient , Enrollment and Aprroval")
-	public void Patient_Enrollment_Approval_Creation_Approval() {
+	public void Patient_Enrollment_Approval_Approval() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
 			String sClassname = getClass().toString();
@@ -76,7 +76,7 @@ public class TC_Patient_Enrollment_Approval extends BaseTest {
 					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Login as Super User is successful");
 			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
-			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUNCHER.get()));
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.App_Patients.get()));
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}
