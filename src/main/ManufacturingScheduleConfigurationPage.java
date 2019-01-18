@@ -186,7 +186,7 @@ public class ManufacturingScheduleConfigurationPage {
 	/* This method covers creation Manufacturing Schedule Configuration
 	 */
 
-	public void patient_Enrollment_Creation(String ProtocolName, String ProductVersion,String ManufacturingSite) {
+	public void Manufacturing_Schedule_Configuration_Creation(String ProtocolName, String ProductVersion,String ManufacturingSite) {
 		try {			
 			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
@@ -207,13 +207,11 @@ public class ManufacturingScheduleConfigurationPage {
 			BaseTest.waitforElement(datePrev_day, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(date_EffectiveEnd, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(date_NextMonth, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.waitforElement(dateNext_day, Config.timeouts.LONGWAIT.get()).click();
-			
+			BaseTest.waitforElement(dateNext_day, Config.timeouts.LONGWAIT.get()).click();			
 			BaseTest.waitforElement(picklist_Staus, Config.timeouts.LONGWAIT.get()).click();
 			picklist_Staus_Approved.click();
 			BaseTest.waitforElement(checkbx_Active, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.waitforElement(btn_Save, Config.timeouts.LONGWAIT.get()).click();
-			
+			BaseTest.waitforElement(btn_Save, Config.timeouts.LONGWAIT.get()).click();			
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());				
 			BaseTest.waitforElement(txt_ManufacturingScheduleConfiguration, Config.timeouts.LONGWAIT.get());		
 			Assert.assertTrue(txt_ManufacturingScheduleConfiguration.isDisplayed());
