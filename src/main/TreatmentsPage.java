@@ -42,11 +42,14 @@ public class TreatmentsPage {
 	 */
 
 	//Actual,Product order,Reservation
+	@FindBy(xpath = "//div[@class='uiInput uiAutocomplete uiInput--default']/input[@title='Search Salesforce']")
+	public WebElement globalSearch;
+	
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//input[@name='search-input']")
 	public WebElement conbobx_Search;		
 	
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//table[@class='slds-table forceRecordLayout slds-table--header-fixed slds-table--edit slds-table--bordered resizable-cols slds-table--resizable-cols uiVirtualDataTable']//tr[1]//th[1]//span//a")
-	public WebElement link_Enrollment;
+	public WebElement link_Element;
 	
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[@title='Related']")
 	public WebElement tab_Related;
@@ -186,7 +189,7 @@ public class TreatmentsPage {
 	public WebElement btn_Save;
 	
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Treatment']")
-	public WebElement txt_Treatment;	
+	public WebElement txt_Treatment;
 	
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Edit Treatment']")
 	public WebElement txt_EditTreatment;
@@ -214,6 +217,49 @@ public class TreatmentsPage {
 	
 	@FindBy(xpath = "//article[@class='slds-card']//button[text()='Save']")
 	public WebElement btn_Save_ActualPatient;
+	
+	//Submit treatment for manual join
+	@FindBy(xpath = "//label[text()='* JOIN']//parent::lightning-input//input")
+	public WebElement txtbx_Join;
+	
+	@FindBy(xpath = "//select[@name='verifierLookup']")
+	public WebElement select_verifierLookup;
+	
+	@FindBy(xpath = "//button[text()='Save']")
+	public WebElement btn_SaveJoin;
+	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Details']//parent::a")
+	public WebElement link_Details;
+	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='test-id__field-label-container slds-form-element__label']//span[text()='JOIN Status']")
+	public WebElement txt_JOINStatus;
+	
+	//Treatment manual join approval
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//lightning-icon[@class='slds-button__icon slds-icon-utility-down slds-icon_container forceIcon']")
+	public WebElement link_moreoptions;
+	
+	@FindBy(xpath = "//a[@title='Verify JOIN']")
+	public WebElement link_verifyJoin;
+	
+	@FindBy(xpath = "//input[@name='red']")
+	public WebElement txtbx_verifyJoinName;
+	
+	@FindBy(xpath = "//button[text()='Verify']")
+	public WebElement btn_Verify;
+	
+	@FindBy(xpath = "//input[@class='slds-input input' and @type='text']")
+	public WebElement txtbx_admin;
+	
+	@FindBy(xpath = "//input[@class='slds-input input' and @type='password']")
+	public WebElement txtbx_password;
+	
+	@FindBy(xpath = "//button[text()='Authenticate']")
+	public WebElement btn_Authenticate;
+	
+	@FindBy(xpath = "//button[text()='Sign']")
+	public WebElement btn_Sign;
+	
+	
 	/*
 	 * Reusable Methods for Treatments Page.
 	 */
@@ -226,7 +272,7 @@ public class TreatmentsPage {
 			BaseTest.waitforElement(conbobx_Search, Config.timeouts.LONGWAIT.get()).sendKeys(EnrollmentNum);
 			BaseTest.waitforElement(conbobx_Search, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
-			BaseTest.waitforElement(link_Enrollment, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(link_Element, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(link_Treatments, Config.timeouts.LONGWAIT.get()).click();
@@ -398,6 +444,109 @@ public class TreatmentsPage {
 		}		
 	}	
 
+	/* This method covers creation of Actual treatment Manual Join
+	 */
+	public void actualTreatment_ManualJoin(String EnrollmentNum, String ProductVersion, String JoinName) {
+		try {			
+			BaseTest.waitforElement(conbobx_Search, Config.timeouts.LONGWAIT.get()).sendKeys(EnrollmentNum);
+			BaseTest.waitforElement(conbobx_Search, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
+			BaseTest.waitforElement(link_Element, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(link_Treatments, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
+			BaseTest.waitforElement(btn_NewActualTreatment, Config.timeouts.LONGWAIT.get()).click();			
+		    BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+            BaseTest.waitforElement(iframe, Config.timeouts.LONGWAIT.get());
+            driver.switchTo().frame(iframe);
+            BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_NewActualTreatment, Config.timeouts.LONGWAIT.get()).click();		
+			BaseTest.scrolldowntoVisibility(select_apheresisCenter);			
+			Utilities.selectfromdropdownwebelement(select_apheresisCenter,"AutomationApheresis");
+			Utilities.selectfromdropdownwebelement(select_collectionPickupLocation,"AutomationDepartment || Test");
+			Utilities.selectfromdropdownwebelement(select_collectionPickupContact,"Automatin_NonPrescriber");
+			Utilities.selectfromdropdownwebelement(select_preference,"Preference 1");
+			BaseTest.waitforElement(datepicker_collectionAppointment, Config.timeouts.LONGWAIT.get()).click();
+			btn_Today.click();
+			BaseTest.waitforElement(select_manufacturingSite, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(select_manufacturingSite);
+			Utilities.selectfromdropdownwebelement(select_manufacturingSite,"AutomationManufacturingSite");
+			Utilities.selectfromdropdownwebelement(select_manufacturingSite2,"AutomationManufacturingSite");
+			BaseTest.waitforElement(datepicker_MFGDelivery, Config.timeouts.LONGWAIT.get()).click();
+			btn_Today.click();			
+			Utilities.selectfromdropdownwebelement(select_productVersion,ProductVersion);			
+			BaseTest.waitforElement(btn_Save, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
+			driver.switchTo().parentFrame();
+			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());		
+			Assert.assertTrue(txt_Treatment.isDisplayed());
+			String ActualTreatment = driver.findElement(By.xpath(
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Actual Treatment name is : " + ActualTreatment);			
+			BaseTest.waitforElement(btn_Submit, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
+			BaseTest.waitforElement(txtbx_Join, Config.timeouts.LONGWAIT.get()).sendKeys(JoinName);
+			Utilities.selectfromdropdownwebelement(select_verifierLookup,"Vaibhav Agnihotri");		
+			BaseTest.waitforElement(btn_SaveJoin, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());		
+			Assert.assertTrue(txt_Treatment.isDisplayed());
+			BaseTest.waitforElement(link_Details, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_JOINStatus, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(txt_JOINStatus);			
+			String JoinStus = driver.findElement(By.xpath(
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='JOIN Status']//parent::div//following-sibling::div//span//span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Actual Treatment Manual JOIN status after submit is : " + JoinStus);				
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e.getMessage());
+			Assert.fail();			
+		}		
+	}	
+	
+	/* This method covers creation of Actual treatment Manual Join Approval
+	 */
+	public void actualTreatment_ManualJoin_Approval(String JoinName,String admin,String password) {
+		try {			
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(JoinName);
+			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
+			BaseTest.waitforElement(link_Element, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());			
+			BaseTest.waitforElement(link_moreoptions, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(link_verifyJoin, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());	
+			BaseTest.waitforElement(txtbx_verifyJoinName, Config.timeouts.LONGWAIT.get()).sendKeys(JoinName);
+			BaseTest.waitforElement(btn_Verify, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txtbx_admin, Config.timeouts.LONGWAIT.get()).sendKeys(admin);
+			BaseTest.waitforElement(txtbx_password, Config.timeouts.LONGWAIT.get()).sendKeys(password);
+			BaseTest.waitforElement(btn_Authenticate, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(btn_Sign, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());		
+			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());		
+			Assert.assertTrue(txt_Treatment.isDisplayed());
+			BaseTest.waitforElement(link_Details, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.waitforElement(txt_JOINStatus, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(txt_JOINStatus);			
+			String JoinStus = driver.findElement(By.xpath(
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='JOIN Status']//parent::div//following-sibling::div//span//span"))
+					.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Actual Treatment Manual JOIN status after Approval is : " + JoinStus);				
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO,"The exception is : " + e.getMessage());
+			Assert.fail();			
+		}		
+	}	
 
 	
 	/* This method covers creation of Reservation treatment and conversion to Actual treatment

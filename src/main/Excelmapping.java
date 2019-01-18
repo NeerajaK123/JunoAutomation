@@ -139,7 +139,10 @@ public class Excelmapping {
 		DoseSchedule("DoseSchedule"),
 		APP_LAUNCHER("App"),
 		APP_MSC("APP_msc"),
-		App_Patients("App_Patients");
+		App_Patients("App_Patients"),
+		ENROLLMENTNUM("EnrollmentNum"),
+		JOINNAME("Join Name"),
+		APP_ENROLLMENTS("App_Enrollments");
 
 		/** The value. */
 		private String value;

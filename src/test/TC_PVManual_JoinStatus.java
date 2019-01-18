@@ -52,6 +52,12 @@ public class TC_PVManual_JoinStatus extends BaseTest {
 			step07(browser);
 			step08();
 			step09();
+			step10(browser);
+			step11();
+			step12();
+			step13(browser);
+			step14();
+			step15();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -113,7 +119,7 @@ public class TC_PVManual_JoinStatus extends BaseTest {
 	}
 
 	/**
-	 * Step 01. Login as admin user
+	 * Step 04. Login as admin user
 	 */
 	public void step04(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
@@ -155,7 +161,7 @@ public class TC_PVManual_JoinStatus extends BaseTest {
 	}
 	
 	/**
-	 * Step 01. Login as admin user
+	 * Step 07. Login as admin user
 	 */
 	public void step07(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
@@ -166,7 +172,7 @@ public class TC_PVManual_JoinStatus extends BaseTest {
 					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
 			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
 			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_MSC.get()));
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Logged in as Admin for approval is Successfull");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Logged in as Admin is Successfull");
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}
@@ -186,6 +192,104 @@ public class TC_PVManual_JoinStatus extends BaseTest {
 	}
 
 	public void step09() throws Exception {
+		try {
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			baseTest.logoutPage.logout();
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Logged out as Admin is Successfull");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			System.out.println("*****Ending to execute: TC_PVManual_JoinStatus*****");
+		}
+	}
+	
+	/**
+	 * Step 10. Login with Super User
+	 */
+	public void step10(String strBrowser) throws Exception {
+		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);	
+		excel.RExcelWriter(Excelmapping.DataCreation.JOINNAME.get(),
+				Utilities.generatePVNameMJWithTimestamp());
+		baseTest = new BaseTest(environmentURL, strBrowser);
+		System.out.println("*****Starting to execute: TC_PVManual_JoinStatus****");
+		try {
+			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.SUPER_USERNAME.get()),
+					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Login as Super User is successful");
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_ENROLLMENTS.get())); 
+		} catch (Exception e) {
+			System.out.println("There was an unexpected reason" + e.getMessage());
+		}
+	}
+
+	/**
+	 * Step 11. Case Actual Treatment with manual join
+	 */
+
+	public void step11() throws Exception {
+		try {
+			BaseTest objbasetest = new BaseTest();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+		    objbasetest.treatmentsPage.actualTreatment_ManualJoin(										
+					excel.RExcelReader(Excelmapping.DataCreation.ENROLLMENTNUM.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.ProductVersionManulJoin.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.JOINNAME.get()));		
+			} catch (Exception e) {
+			System.out.println(e.getMessage());
+			Assert.fail();
+		}
+	}
+
+	/**
+	 * Step 12 Logout With Super User
+	 */
+
+	public void step12() throws Exception {
+		try {
+			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
+			baseTest.logoutPage.logout();
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Logged out as super user is Successfull");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			System.out.println("*****Ending to execute: TC_PVManual_JoinStatus*****");
+		}
+	}
+	
+	/**
+	 * Step 13. Login as admin user
+	 */
+	public void step13(String strBrowser) throws Exception {
+		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
+		baseTest = new BaseTest(environmentURL, strBrowser);
+		System.out.println("*****Starting to execute: TC_PVManual_JoinStatus****");
+		try {
+			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
+					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Logged in as Admin for approval is Successfull");
+		} catch (Exception e) {
+			System.out.println("There was an unexpected reason" + e.getMessage());
+		}
+	}
+
+	public void step14() throws Exception {
+		try {
+			BaseTest objbasetest = new BaseTest();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			objbasetest.treatmentsPage.actualTreatment_ManualJoin_Approval(excel.RExcelReader(Excelmapping.DataCreation.JOINNAME.get()),
+					excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
+					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			Assert.fail();
+		}
+	}
+
+	public void step15() throws Exception {
 		try {
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			baseTest.logoutPage.logout();
