@@ -131,12 +131,14 @@ public class Excelmapping {
 		OnboardingTemplate("OnboardingTemplate"),
 		ManufacturingSite("ManufacturingSite"),
 		ProductVersionAutoJoin("ProductVersionAutoJoin"),
+		ProductVersionManulJoin("ProductVersionManulJoin"),
 		APP_ProductVersion("APP_ProductVersion"),
 		App_Doselevel("App_DL"),
 		App_DoseSchedule("App_DS"),
 		DoseLevel("DoseLevel"),
 		DoseSchedule("DoseSchedule"),
-		APP_LAUNCHER("App");
+		APP_LAUNCHER("App"),
+		APP_MSC("APP_msc");
 
 		/** The value. */
 		private String value;

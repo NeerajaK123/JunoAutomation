@@ -291,8 +291,8 @@ public class JAMSAccount {
 	@FindBy(xpath = "//input[@title='Search Protocols']")
 	public WebElement Search_Protocols;
 
-	@FindBy(xpath = "//div[contains(@title,'A_Prtcl')]")
-	public WebElement Search_ProtocolsResult;
+	@FindBy(xpath = "//table[@class='forceRecordLayout slds-table slds-table_cell-buffer slds-table_bordered uiVirtualDataGrid--default uiVirtualDataGrid']//tr[1]//td[1]//a")
+	public WebElement link_ProtocolsResult;
 
 	@FindBy(xpath = "//span[contains(text(),'Specification Number')]/ancestor::label[@class='label inputLabel uiLabel-left form-element__label uiLabel']/following-sibling::input")
 	public WebElement txtbox_SpecificationNumber;
@@ -492,7 +492,8 @@ public class JAMSAccount {
 			BaseTest.waitforElement(btn_NewProtocolAssignment, Config.timeouts.LONGWAIT.get()).click();
 			;
 			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
-			BaseTest.waitforElement(Search_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.waitforElement(link_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -572,7 +573,7 @@ public class JAMSAccount {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(btn_EditOnboardingID, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.waitforElement(Picklist_Approve, Config.timeouts.LONGWAIT.get()).click();
+			Picklist_Approve.click();
 			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 
@@ -857,12 +858,49 @@ public class JAMSAccount {
 			Assert.fail();
 		}
 	}
+	
+	public void productversion_ManualJoin(String ProductVersion, String Product, String Protocol) {
+
+		try {
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(TxtBox_ProductversionName, Config.timeouts.LONGWAIT.get()).sendKeys(ProductVersion);
+			BaseTest.waitforElement(TxtBox_ProductversionID, Config.timeouts.LONGWAIT.get()).sendKeys("123");
+			BaseTest.waitforElement(ChckBox_Active, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Lookup_Products, Config.timeouts.LONGWAIT.get()).sendKeys(Product);
+			BaseTest.waitforElement(Lkup_accountSite_result, Config.timeouts.LONGWAIT.get()).click();			
+			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			String productversionCreated = driver.findElement(By.xpath(
+					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					.getText();
+			System.out.print("Created productversion is : " + productversionCreated);
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Created productversion is : " + productversionCreated);
+			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
+			protocolproductversion(Protocol);
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(Btn_SubmitForApproval, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(btn_ProductSubmit, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.scrollup(500);
+			BaseTest.waitforElement(JuptrStatus_PendingApproval, Config.timeouts.LONGWAIT.get());
+			Assert.assertTrue(JuptrStatus_PendingApproval.isDisplayed(),
+					"Product version status is not pending approval");
+
+		} catch (InterruptedException e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
+	}
 
 	public void protocolproductversion(String Protocol) {
 		try {
 			BaseTest.waitforElement(btn_New_PPV, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
-			BaseTest.waitforElement(Search_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.waitforElement(link_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(txtbox_SpecificationNumber, Config.timeouts.LONGWAIT.get()).sendKeys("123");
 			BaseTest.waitforElement(txtbox_CollectionDescription, Config.timeouts.LONGWAIT.get())
 					.sendKeys("TestAutoDescription");
@@ -894,7 +932,8 @@ public class JAMSAccount {
 			BaseTest.waitforElement(TxtBox_DoseLevelName, Config.timeouts.LONGWAIT.get()).sendKeys(DoseLevel);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Dose Level is : " + DoseLevel);
 			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
-			BaseTest.waitforElement(Search_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.waitforElement(link_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(ChckBox_Active, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Picklist_Approve, Config.timeouts.LONGWAIT.get()).click();
@@ -931,7 +970,8 @@ public class JAMSAccount {
 			BaseTest.waitforElement(TxtBox_DoseScheduleName, Config.timeouts.LONGWAIT.get()).sendKeys(DoseSchedule);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Dose Schedule is : " + DoseSchedule);
 			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Protocol);
-			BaseTest.waitforElement(Search_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Search_Protocols, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.waitforElement(link_ProtocolsResult, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(ChckBox_Active, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Picklist_Approve, Config.timeouts.LONGWAIT.get()).click();
