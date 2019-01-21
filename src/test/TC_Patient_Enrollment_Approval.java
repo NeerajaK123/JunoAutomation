@@ -130,8 +130,8 @@ public class TC_Patient_Enrollment_Approval extends BaseTest {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Login as Bussiness Admin for Approval is successful");
-			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUCH.get()));
-			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUNCHER.get()));
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
+		//	baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.App_Patients.get()));
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}

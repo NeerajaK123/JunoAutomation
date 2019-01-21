@@ -159,9 +159,9 @@ public class PatientsPage {
 			BaseTest.waitforElement(Chkbx_ReadyToVerify, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(btn_Patient_UploadFiles, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
-			//String workingDir = System.getProperty("user.dir");
+			String workingDir = System.getProperty("user.dir");
 			Runtime.getRuntime()
-					.exec("..\\eclipse-workspace\\JunoAutomation\\src\\resources\\JunoUploadFile.exe");
+			.exec(workingDir+"\\src\\resources\\JunoUploadFile.exe");
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(btn_Save, Config.timeouts.LONGWAIT.get()).click();			
 			driver.switchTo().parentFrame();

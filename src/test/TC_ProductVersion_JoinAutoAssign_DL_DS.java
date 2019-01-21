@@ -140,7 +140,10 @@ public class TC_ProductVersion_JoinAutoAssign_DL_DS extends BaseTest {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			objbasetest.JAMSAccount.doseLevelCreation(excel.RExcelReader(Excelmapping.DataCreation.DoseLevel.get()),excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()),excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()));
 			objbasetest.JAMSAccount.doseScheduleCreation(excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()),excel.RExcelReader(Excelmapping.DataCreation.DoseSchedule.get()),excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()));
-		
+			objbasetest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_MSC.get()));
+			objbasetest.manufacturingScheduleConfigurationPage.Manufacturing_Schedule_Configuration_Creation(excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.ProductVersionManulJoin.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.ManufacturingSite.get()));			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();

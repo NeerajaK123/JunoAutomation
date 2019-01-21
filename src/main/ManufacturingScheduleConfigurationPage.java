@@ -43,7 +43,7 @@ public class ManufacturingScheduleConfigurationPage {
 	 */
 
 	//Manufacturing Schedule Configuration
-	@FindBy(xpath = "//li[@class='slds-button slds-button--neutral slds-truncate']/a[@title='New']")
+	@FindBy(xpath = "//div[@class='slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small test-lvmForceActionsContainer']//li[@class='slds-button slds-button--neutral slds-truncate']/a[@title='New']")
 	public WebElement Btn_New;
 	
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//iframe")
