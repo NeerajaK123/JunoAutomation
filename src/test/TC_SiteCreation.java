@@ -9,7 +9,10 @@ import main.Config;
 import main.Excelmapping;
 import main.Utilities;
 import resources.ExcelReader;
-
+/**
+ * @author nkandikuppa
+ *
+ */
 public class TC_SiteCreation extends BaseTest {
 
 	BaseTest baseTest;
@@ -61,7 +64,7 @@ public class TC_SiteCreation extends BaseTest {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
 		excel.RExcelWriter(Excelmapping.DataCreation.Site.get(), Utilities.generateSiteNameWithTimestamp());
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_Site****");
+		System.out.println("*****Starting to execute: TC_SiteCreation****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.SUPER_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
@@ -102,7 +105,7 @@ public class TC_SiteCreation extends BaseTest {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-			System.out.println("*****Ending to execute: TC_Site*****");
+			System.out.println("*****Ending to execute: TC_SiteCreation*****");
 		}
 	}
 
@@ -112,7 +115,7 @@ public class TC_SiteCreation extends BaseTest {
 	public void step04(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_Site****");
+		System.out.println("*****Starting to execute: TC_SiteCreation****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
@@ -142,7 +145,7 @@ public class TC_SiteCreation extends BaseTest {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-			System.out.println("*****Ending to execute: TC_Site*****");
+			System.out.println("*****Ending to execute: TC_SiteCreation*****");
 		}
 	}
 }

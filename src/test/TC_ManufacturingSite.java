@@ -10,7 +10,10 @@ import main.Config;
 import main.Excelmapping;
 import main.Utilities;
 import resources.ExcelReader;
-
+/**
+ * @author nkandikuppa
+ *
+ */
 public class TC_ManufacturingSite extends BaseTest {
 
 	BaseTest baseTest;
@@ -27,7 +30,7 @@ public class TC_ManufacturingSite extends BaseTest {
 	}
 
 	@Test(description = "Creation of ManufacturingSite")
-	public void ApheresisCreation() {
+	public void ManufacturingSite() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
 			String sClassname = getClass().toString();

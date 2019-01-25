@@ -96,7 +96,8 @@ public class TC_Patient_Enrollment_Approval extends BaseTest {
 					excel.RExcelReader(Excelmapping.PatientEnrollmentCreation.SUBJECTNUM.get()),
 					excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()),
 					excel.RExcelReader(Excelmapping.DataCreation.Site.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()));
+					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()),
+					excel.RExcelReader(Excelmapping.Login.Verifier.get()));
 			excel.RExcelWriter(Excelmapping.PatientEnrollmentCreation.ENROLLMENTNUM.get(), enrollment);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

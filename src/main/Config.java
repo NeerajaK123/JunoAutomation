@@ -3,6 +3,10 @@ package main;
 /**
  * The Class Config.
  */
+/**
+ * @author nkandikuppa
+ *
+ */
 public class Config {
 
 	/**

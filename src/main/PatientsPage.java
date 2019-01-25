@@ -85,6 +85,9 @@ public class PatientsPage {
 	@FindBy(xpath = "//span[@class='slds-file-selector__button slds-button slds-button_neutral']")
 	public WebElement btn_Patient_UploadFiles;
 	
+	@FindBy(xpath = "//span[@class='slds-pill']")
+	public WebElement uploadedfile;	
+	
 	@FindBy(xpath = "//div[@class='slds-button-group slds-align_absolute-center']//button[text()='Save']")
 	public WebElement btn_Save;	
 
@@ -137,7 +140,7 @@ public class PatientsPage {
 	/* This method covers creation Patient and Enrollment
 	 */
 
-	public String patient_Enrollment_Creation(String FName, String LName,String SubjectNum,String Protocol,String Site,String NonPrescriber) {
+	public String patient_Enrollment_Creation(String FName, String LName,String SubjectNum,String Protocol,String Site,String NonPrescriber,String verifier) {
 		try {			
 			BaseTest.waitforElement(Btn_New, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());			
@@ -155,14 +158,18 @@ public class PatientsPage {
 			BaseTest.waitforElement(Chkbx_Verify, Config.timeouts.LONGWAIT.get());
 			BaseTest.scrolldowntoVisibility(Chkbx_Verify);
 			BaseTest.waitforElement(Chkbx_Verify, Config.timeouts.LONGWAIT.get()).click();
-			Utilities.selectfromdropdownwebelement(select_VerifierName,"005m0000002coR7AAI");
+			//Utilities.selectfromdropdownwebelement(select_VerifierName,"005m0000002coR7AAI");
+			BaseTest.waitforElement(select_VerifierName, Config.timeouts.LONGWAIT.get()).click();;
+			WebElement verifier_Approve = driver.findElement(By.xpath("//option[contains(@label,'"+verifier+"')]"));
+			verifier_Approve.click();
 			BaseTest.waitforElement(Chkbx_ReadyToVerify, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(btn_Patient_UploadFiles, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			String workingDir = System.getProperty("user.dir");
 			Runtime.getRuntime()
 			.exec(workingDir+"\\src\\resources\\JunoUploadFile.exe");
-			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());			
+			BaseTest.waitforElement(uploadedfile, Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(btn_Save, Config.timeouts.LONGWAIT.get()).click();			
 			driver.switchTo().parentFrame();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());				

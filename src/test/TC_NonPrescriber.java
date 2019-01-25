@@ -11,7 +11,10 @@ import main.Config;
 import main.Excelmapping;
 import main.Utilities;
 import resources.ExcelReader;
-
+/**
+ * @author nkandikuppa
+ *
+ */
 public class TC_NonPrescriber extends BaseTest {
 
 	BaseTest baseTest;

@@ -1,6 +1,7 @@
 
 package test;
 
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
@@ -10,7 +11,10 @@ import main.Config;
 import main.Excelmapping;
 import main.Utilities;
 import resources.ExcelReader;
-
+/**
+ * @author nkandikuppa
+ *
+ */
 public class TC_ApheresisCreation extends BaseTest {
 
 	BaseTest baseTest;
@@ -87,7 +91,7 @@ public class TC_ApheresisCreation extends BaseTest {
 					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()),
 					excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()),
 					excel.RExcelReader(Excelmapping.DataCreation.Site.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.OnboardingTemplate.get()));
+					excel.RExcelReader(Excelmapping.DataCreation.AphOnboardingTemplate.get()));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
@@ -131,9 +135,26 @@ public class TC_ApheresisCreation extends BaseTest {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());			
-			objbasetest.JAMSAccount.approvingOnboarding_APH(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()));
+			String onboardingid = objbasetest.JAMSAccount.approvingOnboarding_APH(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()));
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()));
+			BaseTest.waitforElement(objbasetest.JAMSAccount.globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()));
+			BaseTest.waitforElement(objbasetest.JAMSAccount.globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.waitforElement(objbasetest.JAMSAccount.globalsearchResult, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(objbasetest.JAMSAccount.Accordion_Apheresis_Showmore_Admin, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(objbasetest.JAMSAccount.Lnk_ApproveAph, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(objbasetest.JAMSAccount.btn_ApproveAphAdmin, Config.timeouts.LONGWAIT.get()).click();
+			excel.RExcelWriter(Excelmapping.DataCreation.OnboardingID.get(), onboardingid);
+				//Adding onboarding ID		
+			BaseTest.waitforElement(objbasetest.JAMSAccount.tab_protocolAssignment_Aph, Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.scrolldowntoVisibility(objbasetest.JAMSAccount.tab_protocolAssignment_Aph);
+			BaseTest.waitforElement(objbasetest.JAMSAccount.hyperLnk_APA, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(objbasetest.JAMSAccount.btn_EditAPA, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(objbasetest.JAMSAccount.searchbox_onboardings, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(objbasetest.JAMSAccount.searchbox_onboardings, Config.timeouts.LONGWAIT.get()).sendKeys(onboardingid);
+			BaseTest.waitforElement(objbasetest.JAMSAccount.searchbox_onboardings, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
+			BaseTest.waitforElement(objbasetest.JAMSAccount.search_result_onboarding, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(objbasetest.JAMSAccount.Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
+			//objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()));
 		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

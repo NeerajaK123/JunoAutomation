@@ -1,20 +1,21 @@
-
 package test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.relevantcodes.extentreports.LogStatus;
+
 import extentReports.ExtentTestManager;
 import main.BaseTest;
 import main.Config;
 import main.Excelmapping;
-import main.Utilities;
 import resources.ExcelReader;
+
 /**
  * @author nkandikuppa
  *
  */
-public class TC_ProductCreation extends BaseTest {
+public class TC_TRT_DL_DS_Status extends BaseTest {
 
 	BaseTest baseTest;
 	ExcelReader excel;
@@ -26,11 +27,11 @@ public class TC_ProductCreation extends BaseTest {
 	public String environmentURL;
 	public String applicationServerUrl;
 
-	public TC_ProductCreation() {
+	public TC_TRT_DL_DS_Status() {
 	}
 
-	@Test(description = "Creation of Product")
-	public void ProductCreation() {
+	@Test(description = "Creation Of Actual Treatment and verification of DL,DS status")
+	public void TRT_DL_DS_Status() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
 			String sClassname = getClass().toString();
@@ -50,100 +51,111 @@ public class TC_ProductCreation extends BaseTest {
 			step01(browser);
 			step02();
 			step03();
-			step04(browser);
+			/*step04(browser);
 			step05();
-			step06();
+			step06();*/
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
 	/**
-	 * Step 01. Login as super user
+	 * Step 01. Login with Super User
 	 */
 	public void step01(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
-		excel.RExcelWriter(Excelmapping.DataCreation.Product.get(), Utilities.generateProdNameWithTimestamp());
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_ProductCreation****");
+		System.out.println("*****Starting to execute: TC_TRT_DL_DS_Status****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.SUPER_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Login as super user is Successfull");			
-			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_Product.get()));
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Login as Super User is successful");
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_ENROLLMENTS.get()));
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}
 	}
 
 	/**
-	 * Step 02. Site creation
+	 * Step 02. Actual Treatment DL,DS status verification
 	 */
 
 	public void step02() throws Exception {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.JAMSAccount.productCreation(excel.RExcelReader(Excelmapping.DataCreation.Product.get()));
+		String  ActualTreatment =objbasetest.treatmentsPage.actualTreatment_DoseLevelDoseScheduleStatus(
+					excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()),
+					excel.RExcelReader(Excelmapping.PatientEnrollmentCreation.ENROLLMENTNUM.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Site.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.ManufacturingSite.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Department.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Address.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.DoseLevel.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.DoseSchedule.get()),
+					excel.RExcelReader(Excelmapping.Login.Verifier.get()));
+		excel.RExcelWriter(Excelmapping.PatientEnrollmentCreation.TreatmentCreated.get(), ActualTreatment);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
 		}
 	}
+
 	/**
-	 * Step 03 Logout
+	 * Step 03 Logout With Super User
 	 */
 
 	public void step03() throws Exception {
 		try {
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			baseTest.logoutPage.logout();
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Logged out as super user is Successfull");
-
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Logout as Super User is successful");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-			System.out.println("*****Ending to execute: TC_ProductCreation*****");
+			System.out.println("*****Ending to execute: TC_TRT_DL_DS_Status*****");
 		}
 	}
-
-	/**
-	 * Step 01. Login as admin user
-	 */
+	
 	public void step04(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_ProductCreation****");
+		System.out.println("*****Starting to execute_Admin: TC_TRT_DL_DS_Status****");
 		try {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Login as Admin User is successful");
 			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Logged in as Admin for approval is Successfull");
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_TREATMENTS.get()));
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}
 	}
-
 	public void step05() throws Exception {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.JAMSAccount.accountApprovalJams(excel.RExcelReader(Excelmapping.DataCreation.Product.get()));
+			objbasetest.treatmentsPage.doseapproval(excel.RExcelReader(Excelmapping.PatientEnrollmentCreation.TreatmentCreated.get()));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
 		}
 	}
 
+	
+	
 	public void step06() throws Exception {
 		try {
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			baseTest.logoutPage.logout();
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Logged out as Admin is Successfull");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Logout as Admin User is successful");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
-			System.out.println("*****Ending to execute: TC_ProductCreation*****");
+			System.out.println("*****Ending to execute: TC_TRT_DL_DS_Status*****");
 		}
 	}
+	
 }

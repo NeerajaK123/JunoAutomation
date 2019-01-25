@@ -56,9 +56,7 @@ public class LogoutPage {
 		try {		
 			BaseTest.waitforElement(linkimagelogout, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(linkLogout, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.pleasewait(Config.timeouts.SHORTWAIT.get());
-			
-			driver.close();
+			//BaseTest.pleasewait(Config.timeouts.SHORTWAIT.get());
 			driver.quit();
 		} catch (Exception logoutissue) {
 			System.out.println(logoutissue.getMessage());

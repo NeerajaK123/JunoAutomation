@@ -13,11 +13,14 @@ import org.testng.Assert;
 import com.relevantcodes.extentreports.LogStatus;
 
 import extentReports.ExtentTestManager;
-
+/**
+ * @author nkandikuppa
+ *
+ */
 public class JAMSAccount {
 
 	WebDriver driver;
-
+public String onboardingid;
 	/**
 	 * Instantiates a new page.
 	 * 
@@ -44,7 +47,16 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//div[contains(text(),'Non Prescriber record type')]")
 	public WebElement Radiobtn_NonPrescriber;
+	
+	@FindBy(xpath = "//div[contains(text(),'Creation of onboarding templates for apheresis center account types only')]")
+	public WebElement Radiobtn_ApheresisOBT;	
 
+	@FindBy(xpath = "//span[contains(text(),'Onboarding Template Name')]/ancestor::label[@class='label inputLabel uiLabel-left form-element__label uiLabel']/following-sibling::input")
+	public WebElement textbox_OnboardingTemplate;
+	
+	@FindBy(xpath = "//span[contains(text(),'Active')]/ancestor::label[@class='label inputLabel uiLabel-left form-element__label uiLabel']/following-sibling::input[@type='checkbox']")
+	public WebElement checkbox_Active_onboarding;
+	
 	@FindBy(xpath = "//div[@class='forceChangeRecordTypeFooter']/button[2]/span[contains(text(),'Next')]")
 	public WebElement Btn_NextAccount;
 
@@ -122,6 +134,10 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//a[@title='Approved']")
 	public WebElement Picklist_Approve;
+	
+	@FindBy(xpath = "//a[@title='Verified']")
+	public WebElement Picklist_verified_Onboarding;
+	
 
 	@FindBy(xpath = "//div[@data-value='Academic Institution']")
 	public WebElement Select_Category_Acadamic_institution;
@@ -140,6 +156,9 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Account']")
 	public WebElement CreatedAccount;
+	
+	
+	
 
 	@FindBy(xpath = "//div[contains(text(),'Provider Site profile for commercial and clinical')]")
 	public WebElement Radiobtn_Site;
@@ -221,6 +240,8 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//tbody/tr/th/span/a")
 	public WebElement globalsearchResult;
+	
+	
 
 	@FindBy(xpath = "(//span[contains(text(),'Protocol Assignments')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
 	public WebElement btn_New_PPV;
@@ -314,12 +335,41 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//a[@title='Show 2 more actions']")
 	public WebElement Accordion_Apheresis_Showmore;
+	
+
+	@FindBy(xpath = "//a[@title='Show 3 more actions']")
+	public WebElement Accordion_Apheresis_Showmore_Admin;
+	
+	@FindBy(xpath = "//a[contains(text(),'APA-')]")
+	public WebElement hyperLnk_APA;
+	
+	@FindBy(xpath = "(//span[contains(text(),'Protocol Assignments')])[1]")
+	public WebElement tab_protocolAssignment_Aph;	
+	
+	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[@title='Edit']")
+	public WebElement btn_EditAPA;
+
+	@FindBy(xpath = "//input[@title='Search Onboardings']")
+	public WebElement searchbox_onboardings;
+	
+	
+	@FindBy(xpath = "//tbody//tr//td/a[contains(@title,'OB-')]")
+	public WebElement search_result_onboarding;
+	
 
 	@FindBy(xpath = "//div[contains(text(),'Active Onboarding Templates')]")
 	public WebElement tab_ActiveOnboardingTemplate;
 
 	@FindBy(xpath = "//li[@role='presentation']/a[@title='Onboard']")
 	public WebElement Lnk_Onboard;
+	
+	@FindBy(xpath = "//li[@role='presentation']/a[@title='Approve']")
+	public WebElement Lnk_ApproveAph;
+	
+	@FindBy(xpath = "//button[contains(text(),'Approve')]")
+	public WebElement btn_ApproveAphAdmin;
+	
 
 	@FindBy(xpath = "//div[@class='modal-footer slds-modal__footer slds-size_1-of-1']/button[contains(text(),'Submit')]")
 	public WebElement submit_Onboard;
@@ -332,14 +382,21 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@title='Edit']")
 	public WebElement btn_EditOnboardingID;
-
+	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[@title='Submit for Approval']")
+	public WebElement btn_SubmitforApproval;
+	
+	@FindBy(xpath = "//button[contains(text(),'Submit')]")
+	public WebElement btn_submitApproval_Submit;
+	
+	
 	@FindBy(xpath = "//a[contains(text(),'Draft')]")
 	public WebElement lkup_draft;
 
 	@FindBy(xpath = "//li[@role='presentation']//a[@title='Verified']")
 	public WebElement lkupresult_verifed;
 
-	@FindBy(xpath = "(//ul[@class='slds-listbox slds-listbox_vertical']/li[@role='presentation']//span[@title='Study specific PA'])[2]")
+	@FindBy(xpath = "(//ul[@class='slds-listbox slds-listbox_vertical']/li[@role='presentation']//span[@title='Study specific PA'])")
 	public WebElement selectContractType;
 
 	@FindBy(xpath = "//span[contains(text(),'Contract Type')]//ancestor::div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow slds-hint-parent override--slds-form-element']/div[2]/button/lightning-primitive-icon")
@@ -347,6 +404,11 @@ public class JAMSAccount {
 
 	@FindBy(xpath = "//span[contains(text(),'Save')]")
 	public WebElement btnSave_onb;
+	
+	@FindBy(xpath = "//nav[@class='entityNameTitle']//span[contains(text(),'Onboarding')]/ancestor::h1/div/span")
+	public WebElement onboardingID;
+	
+	
 	/*
 	 * Reusable Methods
 	 */
@@ -471,6 +533,8 @@ public class JAMSAccount {
 			BaseTest.waitforElement(Lkup_contact, Config.timeouts.LONGWAIT.get()).sendKeys(NonPrescriber);
 			//BaseTest.waitforElement(Lkup_contact, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
 			BaseTest.waitforElement(Lkup_contact_result, Config.timeouts.LONGWAIT.get()).click();
+			//WebElement contactresult = driver.findElement(By.xpath("(//tbody/tr/td/a[contains(@title,'A_')])[1]"));
+			//BaseTest.waitforElement(contactresult, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Select_DPDeliveryPrimary, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(chooseOption, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Select_DPDeliveryAlternate, Config.timeouts.LONGWAIT.get()).click();
@@ -511,9 +575,12 @@ public class JAMSAccount {
 			BaseTest.waitforElement(Accordion_Apheresis_Showmore, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Lnk_Onboard, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(tab_ActiveOnboardingTemplate, Config.timeouts.LONGWAIT.get());
-			WebElement onboarding = driver
-					.findElement(By.xpath("//span[contains(text(),'" + onboardingTemplate + "')]"));
-			BaseTest.waitforElement(onboarding, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(driver
+					.findElement(By.xpath("//span[contains(text(),'" + onboardingTemplate + "')]")), Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(driver
+					.findElement(By.xpath("//span[contains(text(),'" + onboardingTemplate + "')]")));
+			BaseTest.waitforElement(driver
+					.findElement(By.xpath("//span[contains(text(),'" + onboardingTemplate + "')]")), Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(submit_Onboard, Config.timeouts.LONGWAIT.get()).click();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -523,7 +590,7 @@ public class JAMSAccount {
 		}
 	}
 
-	public void approvingOnboarding_APH(String Apheresis) {
+	public String approvingOnboarding_APH(String Apheresis) {
 		try {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Apheresis);
@@ -532,12 +599,16 @@ public class JAMSAccount {
 			BaseTest.scrolldown(100);
 			BaseTest.waitforElement(hyperlnk_OnboardingID, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(editPen_ContractType, Config.timeouts.LONGWAIT.get()).click();
+			selectContractType.click();
 			BaseTest.waitforElement(chooseOption, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.scrollup(200);
 			BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.waitforElement(Picklist_Approve, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Picklist_verified_Onboarding, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(btnSave_onb, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			onboardingid  = onboardingID.getText();
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Onboarding ID i " + onboardingid );
+			
 			/*
 			 * BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
 			 * BaseTest.waitforElement(hyperlnk_OnboardingID,
@@ -561,6 +632,7 @@ public class JAMSAccount {
 			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
 			Assert.fail();
 		}
+		return onboardingid;
 
 	}
 
@@ -576,7 +648,7 @@ public class JAMSAccount {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(btn_EditOnboardingID, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(lkup_draft, Config.timeouts.LONGWAIT.get()).click();
-			Picklist_Approve.click();
+			BaseTest.waitforElement(Picklist_Approve, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 
@@ -759,11 +831,13 @@ public class JAMSAccount {
 					.getText();
 			System.out.print("Created Apheresis is : " + ApheresisCreated);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Apheresis is : " + ApheresisCreated);
-			addressCreation(Address, city);
+			addressCreation(Address,city);
+			BaseTest.waitforElement(Btn_Address_site, Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.scrolldowntoVisibility(Btn_Address_site);
 			relatedContactCreation(NonPrescriber);
 			relatedProtocolAssignment(Protocol);
 			BaseTest.scrolldown(200);
+			BaseTest.waitforElement(btn_NewProtocolAssignment, Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.scrolldowntoVisibility(btn_NewProtocolAssignment);
 			relatedAffiliatedSiteAssignment(Site);
 			BaseTest.scrollup(800);
@@ -968,7 +1042,9 @@ public class JAMSAccount {
 			WebElement pvaj = driver.findElement(By.xpath("(//a[contains(@title,'A_PVAJ')])[2]"));
 			BaseTest.waitforElement(pvaj, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.scrolldown(500);
+			BaseTest.scrolldown(900);
+			BaseTest.waitforElement(btn_New_DS, Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.scrolldowntoVisibility(btn_New_DS);
 			BaseTest.waitforElement(btn_New_DS, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(TxtBox_DoseScheduleName, Config.timeouts.LONGWAIT.get()).sendKeys(DoseSchedule);
@@ -982,7 +1058,30 @@ public class JAMSAccount {
 			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.info("The exception is : " + e.getMessage());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());
+			Assert.fail();
+		}
+	}
+	
+	public void apheresisOnboardingTemplate(String AphersisOBT)
+	{
+		try {
+			BaseTest.waitforElement(Btn_NewAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Radiobtn_ApheresisOBT, Config.timeouts.LONGWAIT.get()).click();		
+			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(textbox_OnboardingTemplate, Config.timeouts.LONGWAIT.get()).sendKeys(AphersisOBT);
+			BaseTest.waitforElement(checkbox_Active_onboarding, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(driver.findElement(By.xpath("//div[@title='"+AphersisOBT+"']")), Config.timeouts.LONGWAIT.get());
+			Assert.assertTrue(driver.findElement(By.xpath("//div[@title='"+AphersisOBT+"']")).isDisplayed());
+			System.out.print("Created Apheresis OnboardingTemplate is : " + AphersisOBT);
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Apheresis OnboardingTemplate is : " + AphersisOBT);
+		
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			logger.info("The exception is : " + e.getMessage());
 			ExtentTestManager.getTest().log(LogStatus.INFO, "The exception is : " + e.getMessage());

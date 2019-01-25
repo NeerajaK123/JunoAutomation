@@ -18,7 +18,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import resources.ExcelReader;
-
+/**
+ * @author nkandikuppa
+ *
+ */
 /**
  * The Class Utilities.
  */
@@ -272,61 +275,76 @@ public class Utilities {
 		String stimestamp = timestamp(formatsysDate().toString());
 		return "A" + stimestamp;
 	}
+	public static String generateRandomNameAphOnboardingWithTimestamp() throws ParseException {
+		String stimestamp = timestamp(formatsysDate().toString());
+		return "A_AOBT_" + stimestamp;
+	}
 	
 	public static String generateDeptNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_Dept_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_Dept_" + ssubtimestamp;
 	}
 	
 	public static String generateNonPrescriberWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_NonPresc_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_NonPresc_" + ssubtimestamp;
 	}
 	
 	public static String generateOrgNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_Org_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_Org_" + ssubtimestamp;
 	}
 	public static String generateProdNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_Prdct_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_Prdct_" + ssubtimestamp;
 	}
 	public static String generateSiteNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_Site_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_Site_" + ssubtimestamp;
 	}
 	public static String generateProtocolNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		
-		return "A_Prtcl_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_Prtcl_" + ssubtimestamp;
 	}
 	public static String generateApheresisNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_Aph_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_Aph_" + ssubtimestamp;
 	}
 
 	public static String generateManufacturingSiteNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_MS_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_MS_" + ssubtimestamp;
 	}
 	
 	public static String generatePVNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_PVAJ_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_PVAJ_" + ssubtimestamp;
 	}
 	public static String generatePVNameMJWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_PVMJ_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_PVMJ_" + ssubtimestamp;
 	}
 	
 	public static String generateDLNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_DL_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_DL_" + ssubtimestamp;
 	}
 	
 	public static String generateDSNameWithTimestamp() throws ParseException {
 		String stimestamp = timestamp(formatsysDate().toString());
-		return "A_DS_" + stimestamp;
+		String ssubtimestamp = stimestamp.substring(6);
+		return "A_DS_" + ssubtimestamp;
 	}
 	/**
 	 * Generate Three digit random number with timestamp
@@ -560,6 +578,7 @@ public class Utilities {
 		Select select = new Select(BaseTest.waitforElement(webElement, Config.timeouts.MEDIUMWAIT.get()));
 		select.selectByVisibleText(valuetoselect);
 	}
+	
 
 	/**
 	 * Select from drop down.

@@ -3,6 +3,10 @@ package main;
 /**
  * The Class Excelmapping.
  */
+/**
+ * @author nkandikuppa
+ *
+ */
 public class Excelmapping {
 	/**
 	 * The Enum Login.
@@ -12,7 +16,7 @@ public class Excelmapping {
 	public enum Login {
 
 		ADMIN_USERNAME("ADMIN_Username"), ADMIN_PASSWORD("ADMIN_Password"),SUPER_USERNAME("Super_Username"), SUPER_PASSWORD("Super_Password"), APP_LAUCH("App_J"),APP_LAUNCHER("App")
-		,APP_TREATMENTS("App_Treatments"),APP_ENROLLMENTS("App_Enrollments");
+		,APP_TREATMENTS("App_Treatments"),APP_ENROLLMENTS("App_Enrollments"),Verifier("Verifier");
 
 		/** The value. */
 		private String value;
@@ -99,7 +103,8 @@ public class Excelmapping {
 		SUBJECTNUM("SubjectNum"),
 		ENROLLMENTNUM("EnrollmentNum"),
 		USERNAME("ADMIN_Username"),
-		PASSWORD("ADMIN_Password");
+		PASSWORD("ADMIN_Password"),
+		TreatmentCreated("TreatmentCreated");
 		private String value;
 
 		private PatientEnrollmentCreation(String value) {
@@ -128,7 +133,6 @@ public class Excelmapping {
 		APP_Protocols("APP_Protocols"),
 		Protocol("Protocol"),
 		Apheresis("Apheresis"),
-		OnboardingTemplate("OnboardingTemplate"),
 		ManufacturingSite("ManufacturingSite"),
 		ProductVersionAutoJoin("ProductVersionAutoJoin"),
 		ProductVersionManulJoin("ProductVersionManulJoin"),
@@ -142,7 +146,10 @@ public class Excelmapping {
 		App_Patients("App_Patients"),
 		ENROLLMENTNUM("EnrollmentNum"),
 		JOINNAME("Join Name"),
-		APP_ENROLLMENTS("App_Enrollments");
+		APP_ENROLLMENTS("App_Enrollments"),
+		OnboardingID("OnboardingID"),
+		App_OnboardingTemplate("App_OnboardingTemplate"),
+		AphOnboardingTemplate("AphOnboardingTemplate");
 
 		/** The value. */
 		private String value;

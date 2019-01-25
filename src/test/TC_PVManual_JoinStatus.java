@@ -9,7 +9,10 @@ import main.Config;
 import main.Excelmapping;
 import main.Utilities;
 import resources.ExcelReader;
-
+/**
+ * @author nkandikuppa
+ *
+ */
 public class TC_PVManual_JoinStatus extends BaseTest {
 
 	BaseTest baseTest;
@@ -234,7 +237,12 @@ public class TC_PVManual_JoinStatus extends BaseTest {
 		    objbasetest.treatmentsPage.actualTreatment_ManualJoin(										
 					excel.RExcelReader(Excelmapping.DataCreation.ENROLLMENTNUM.get()),
 					excel.RExcelReader(Excelmapping.DataCreation.ProductVersionManulJoin.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.JOINNAME.get()));		
+					excel.RExcelReader(Excelmapping.DataCreation.JOINNAME.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Site.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Address.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.ManufacturingSite.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()));		
 			} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();

@@ -13,11 +13,11 @@ import main.Utilities;
 import resources.ExcelReader;
 
 /**
- * @author gSandeep
+ * @author nkandikuppa
  *
  */
 
-public class TC_ActualTreatment_ChangeReason_ProductOrder extends BaseTest {
+public class TC_ApheresisOnboardingTemplate  extends BaseTest {
 
 	BaseTest baseTest;
 	ExcelReader excel;
@@ -29,11 +29,11 @@ public class TC_ActualTreatment_ChangeReason_ProductOrder extends BaseTest {
 	public String environmentURL;
 	public String applicationServerUrl;
 
-	public TC_ActualTreatment_ChangeReason_ProductOrder() {
+	public TC_ApheresisOnboardingTemplate() {
 	}
 
-	@Test(description = "Creation Of Actual Treatment, Treatment change reason and Product Order")
-	public void CreationOfActualTreatment_ChangeReasonAndProductOrder() {
+	@Test(description ="Creation Of Apheresis OnboardingTemplate")
+	public void ApheresisOnboardingTemplate() {
 		try {
 			BaseTest objbaseTest = new BaseTest();
 			String sClassname = getClass().toString();
@@ -52,48 +52,42 @@ public class TC_ActualTreatment_ChangeReason_ProductOrder extends BaseTest {
 		try {
 			step01(browser);
 			step02();
-			step03();
+			step03();			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-
+ 
 	/**
 	 * Step 01. Login with Super User
 	 */
 	public void step01(String strBrowser) throws Exception {
 		excel = new ExcelReader(testDataPath, sheetName, rowId = strBrowser);
+		excel.RExcelWriter(Excelmapping.DataCreation.AphOnboardingTemplate.get(),
+				Utilities.generateRandomNameAphOnboardingWithTimestamp());
 		baseTest = new BaseTest(environmentURL, strBrowser);
-		System.out.println("*****Starting to execute: TC_ActualTreatment_ProductOrder****");
+		System.out.println("*****Starting to execute: TC_ApheresisOnboardingTemplate****");
 		try {
-			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.SUPER_USERNAME.get()),
-					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Login as Super User is successful");
+			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.ADMIN_USERNAME.get()),
+					excel.RExcelReader(Excelmapping.Login.ADMIN_PASSWORD.get()));
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Login as Super User is successful");
 			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
-			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_ENROLLMENTS.get()));
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.App_OnboardingTemplate.get())); 
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
 		}
 	}
 
 	/**
-	 * Step 02. Case Actual Treatment and Product Order
+	 * Step 02. Creation of Apheresis Onboarding template
 	 */
 
 	public void step02() throws Exception {
 		try {
 			BaseTest objbasetest = new BaseTest();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			objbasetest.treatmentsPage.actualTreatment_ChangeReason_ProductOrder(
-					excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()),
-					excel.RExcelReader(Excelmapping.PatientEnrollmentCreation.ENROLLMENTNUM.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.Site.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.ManufacturingSite.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.Department.get()),
-					excel.RExcelReader(Excelmapping.DataCreation.Address.get()));
-		} catch (Exception e) {
+			objbasetest.JAMSAccount.apheresisOnboardingTemplate(excel.RExcelReader(Excelmapping.DataCreation.AphOnboardingTemplate.get()));
+			} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
 		}
@@ -107,10 +101,10 @@ public class TC_ActualTreatment_ChangeReason_ProductOrder extends BaseTest {
 		try {
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			baseTest.logoutPage.logout();
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Logout as Super User is successful");
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Logout as Super User is successful");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println("*****Ending to execute: TC_ActualTreatment_ProductOrder*****");
+			System.out.println("*****Ending to execute: TC_ApheresisOnboardingTemplate*****");
 		}
 	}
 }

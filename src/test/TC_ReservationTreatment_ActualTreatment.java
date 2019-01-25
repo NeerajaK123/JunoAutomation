@@ -69,7 +69,7 @@ public class TC_ReservationTreatment_ActualTreatment  extends BaseTest {
 			baseTest.loginPage.login(excel.RExcelReader(Excelmapping.Login.SUPER_USERNAME.get()),
 					excel.RExcelReader(Excelmapping.Login.SUPER_PASSWORD.get()));
 			ExtentTestManager.getTest().log(LogStatus.INFO,"Login as Super User is successful");
-			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_LAUCH.get()));
+			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.DataCreation.APP_JUPTR.get()));
 			baseTest.loginPage.appSelection_Applauncher(excel.RExcelReader(Excelmapping.Login.APP_TREATMENTS.get())); 
 		} catch (Exception e) {
 			System.out.println("There was an unexpected reason" + e.getMessage());
@@ -86,7 +86,14 @@ public class TC_ReservationTreatment_ActualTreatment  extends BaseTest {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 		    objbasetest.treatmentsPage.reservationTreatment_To_Actual(					
 					excel.RExcelReader(Excelmapping.PatientEnrollmentCreation.LNAME.get()),					
-					excel.RExcelReader(Excelmapping.PatientEnrollmentCreation.ENROLLMENTNUM.get()));		
+					excel.RExcelReader(Excelmapping.PatientEnrollmentCreation.ENROLLMENTNUM.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Site.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.NonPrescriber.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Protocol.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Apheresis.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.ManufacturingSite.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.ProductVersionAutoJoin.get()),
+					excel.RExcelReader(Excelmapping.DataCreation.Address.get()));		
 			} catch (Exception e) {
 			System.out.println(e.getMessage());
 			Assert.fail();
