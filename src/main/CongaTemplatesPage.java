@@ -170,8 +170,8 @@ public class CongaTemplatesPage {
 			String workingDir = System.getProperty("user.dir");
 			Runtime.getRuntime()
 					.exec(workingDir+"\\src\\resources\\JunoUploadFile.exe");
+			Thread.sleep(7000);
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());
 			BaseTest.waitforElement(btn_Done, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.SHORTWAIT.get());
 			ExtentTestManager.getTest().log(LogStatus.INFO,"File is uploaded in Notes & Attachments");
