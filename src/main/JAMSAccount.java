@@ -248,6 +248,9 @@ public String onboardingid;
 
 	@FindBy(xpath = "(//span[contains(text(),'Dose Levels')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
 	public WebElement btn_New_DL;
+	
+	@FindBy(xpath = "//span[@class='slds-card__header-title slds-truncate slds-m-right--xx-small' and contains(text(),'Dose Levels')]")
+	public WebElement span_DoseLevel;
 
 	@FindBy(xpath = "//span[contains(text(),'Total Cell Amount (10^6)')]/ancestor::label/following-sibling::input")
 	public WebElement TxtBox_TotalcellAmount;
@@ -270,8 +273,14 @@ public String onboardingid;
 	@FindBy(xpath = "(//td[@class='uiDayInMonthCell'])[15]")
 	public WebElement Effective_EndDate_Fifteenthday_NextMonth;
 
-	@FindBy(xpath = "(//span[contains(text(),'Dose Schedules')]/ancestor::h2/ancestor::div[@class='slds-media__body']/ancestor::header/following-sibling::div/div/ul/li/a[@title='New'])")
+	@FindBy(xpath = "//span[@class='slds-card__header-title slds-truncate slds-m-right--xx-small' and contains(text(),'Dose Levels')]")
 	public WebElement btn_New_DS;
+	
+	@FindBy(xpath = "//span[@class='slds-card__header-title slds-truncate slds-m-right--xx-small' and contains(text(),'Dose Schedules')]")
+	public WebElement span_DoseSchedules;
+	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='slds-truncate' and text()='New']")
+	public WebElement btn_NewDoseSchedule;
 
 	@FindBy(xpath = "//a[@title='Related']")
 	public WebElement tab_Related;
@@ -340,7 +349,7 @@ public String onboardingid;
 	@FindBy(xpath = "//a[@title='Show 3 more actions']")
 	public WebElement Accordion_Apheresis_Showmore_Admin;
 	
-	@FindBy(xpath = "//a[contains(text(),'APA-')]")
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[contains(text(),'APA-')]")
 	public WebElement hyperLnk_APA;
 	
 	@FindBy(xpath = "(//span[contains(text(),'Protocol Assignments')])[1]")
@@ -437,6 +446,7 @@ public String onboardingid;
 			BaseTest.waitforElement(Select_Category_Acadamic_institution, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(chooseOption, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_Save_OrganisationAccount, Config.timeouts.LONGWAIT.get()).click();
+			Thread.sleep(5000);
 			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
@@ -515,6 +525,7 @@ public String onboardingid;
 			BaseTest.waitforElement(ChckBox_Primary, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(Btn_AddRelationShip_contact, Config.timeouts.LONGWAIT.get());
 			//BaseTest.waitforElement(driver.findElement(By.xpath("//a[contains(text(),'" + Address + "')]")),
 					//Config.timeouts.LONGWAIT.get());
 			//Assert.assertTrue(driver.findElement(By.xpath("//a[contains(text(),'" + Address + "')]")).isDisplayed());
@@ -1042,10 +1053,12 @@ public String onboardingid;
 			WebElement pvaj = driver.findElement(By.xpath("(//a[contains(@title,'A_PVAJ')])[2]"));
 			BaseTest.waitforElement(pvaj, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.scrolldown(900);
-			BaseTest.waitforElement(btn_New_DS, Config.timeouts.MEDIUMWAIT.get());
-			BaseTest.scrolldowntoVisibility(btn_New_DS);
-			BaseTest.waitforElement(btn_New_DS, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(span_DoseLevel, Config.timeouts.MEDIUMWAIT.get());
+			BaseTest.scrolldowntoVisibility(span_DoseLevel);
+			BaseTest.waitforElement(span_DoseSchedules, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.waitforElement(btn_NewDoseSchedule, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(Btn_NextAccount, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(TxtBox_DoseScheduleName, Config.timeouts.LONGWAIT.get()).sendKeys(DoseSchedule);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Dose Schedule is : " + DoseSchedule);
