@@ -196,7 +196,7 @@ public String onboardingid;
 	@FindBy(xpath = "//span[contains(text(),'Active')]/ancestor::label/following-sibling::input")
 	public WebElement ChckBox_Active;
 
-	@FindBy(xpath = "//div[@class='forceModalActionContainer--footerAction forceModalActionContainer']/button[3]/span[contains(text(),'Save')]")
+	@FindBy(xpath = "//button[3]/span[contains(text(),'Save')]")
 	public WebElement Btn_SaveAddress;
 
 	@FindBy(xpath = "//ul[@class='branding-actions slds-button-group slds-m-left--xx-small oneActionsRibbon forceActionsContainer']/li[2]/a/div[contains(text(),'Submit for Approval')]")
@@ -235,6 +235,9 @@ public String onboardingid;
 	@FindBy(xpath = "//div[@data-value='DP Delivery Alternate']")
 	public WebElement Select_DPDeliveryAlternate;
 
+	@FindBy(xpath = "//div[@data-value='Apheresis Pickup']")
+	public WebElement Select_ApheresisPickup;	
+	
 	@FindBy(xpath = "//div[@class='uiInput uiAutocomplete uiInput--default']/input[@title='Search Salesforce']")
 	public WebElement globalSearch;
 
@@ -414,7 +417,7 @@ public String onboardingid;
 	@FindBy(xpath = "//span[contains(text(),'Save')]")
 	public WebElement btnSave_onb;
 	
-	@FindBy(xpath = "//nav[@class='entityNameTitle']//span[contains(text(),'Onboarding')]/ancestor::h1/div/span")
+	@FindBy(xpath = "//nav[@class='entityNameTitle']//span[contains(text(),'Onboarding')]/ancestor::nav/following-sibling::h1/span")
 	public WebElement onboardingID;
 	
 	
@@ -452,7 +455,7 @@ public String onboardingid;
 			BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(CreatedAccount.isDisplayed());
 			String NonPrescriber = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			System.out.print("Created NonPrescriber account is : " + NonPrescriber);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Non-Prescriber account is : " + NonPrescriber);
@@ -482,19 +485,19 @@ public String onboardingid;
 			BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(CreatedAccount.isDisplayed());
 			String SiteCreated = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			System.out.print("Created Site is : " + SiteCreated);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Site is : " + SiteCreated);
 			addressCreation(Address, city);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Added address to the site is : " + Address);
-			BaseTest.scrolldown(100);
+			BaseTest.scrolldown(300);
 			relatedContactCreation(NonPrescriber);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Contact added to the site is  : " + NonPrescriber);
 			BaseTest.waitforElement(Btn_SubmitForApproval, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(txtbox_Comments, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(btn_Submit, Config.timeouts.LONGWAIT.get()).click();
-			BaseTest.scrollup(150);
+			BaseTest.scrollup(2000);
 			BaseTest.waitforElement(Status_PendingApproval, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(Status_PendingApproval.isDisplayed(), "Site status is not pending approval");
 
@@ -509,7 +512,8 @@ public String onboardingid;
 
 	public void addressCreation(String Address, String city) {
 		try {
-			BaseTest objbasetest = new BaseTest();
+			BaseTest objbasetest = new BaseTest();			
+			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_Address_site, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(SelectCollectionPickup, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(objbasetest.JAMSAccount.chooseOption, Config.timeouts.LONGWAIT.get()).click();
@@ -549,6 +553,8 @@ public String onboardingid;
 			BaseTest.waitforElement(Select_DPDeliveryPrimary, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(chooseOption, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Select_DPDeliveryAlternate, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(chooseOption, Config.timeouts.LONGWAIT.get()).click();
+			BaseTest.waitforElement(Select_ApheresisPickup, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(chooseOption, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
@@ -608,6 +614,7 @@ public String onboardingid;
 			BaseTest.waitforElement(globalSearch, Config.timeouts.LONGWAIT.get()).sendKeys(Keys.ENTER);
 			BaseTest.waitforElement(globalsearchResult, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.scrolldown(100);
+			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(hyperlnk_OnboardingID, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(editPen_ContractType, Config.timeouts.LONGWAIT.get()).click();
 			selectContractType.click();
@@ -617,6 +624,7 @@ public String onboardingid;
 			BaseTest.waitforElement(Picklist_verified_Onboarding, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(btnSave_onb, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
+			BaseTest.scrollup(2000);
 			onboardingid  = onboardingID.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Onboarding ID i " + onboardingid );
 			
@@ -728,7 +736,7 @@ public String onboardingid;
 			BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(CreatedAccount.isDisplayed());
 			String DepartmentCreated = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			System.out.print("Created Department is : " + DepartmentCreated);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Department is : " + DepartmentCreated);
@@ -762,10 +770,10 @@ public String onboardingid;
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span")),
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span")),
 					Config.timeouts.LONGWAIT.get());
 			String ProductCreated = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			System.out.print("Created Product is : " + ProductCreated);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Product is : " + ProductCreated);
@@ -802,10 +810,10 @@ public String onboardingid;
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span")),
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span")),
 					Config.timeouts.LONGWAIT.get());
 			String ProtocolCreated = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			System.out.print("Created Protocol is : " + ProtocolCreated);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Protocol is : " + ProtocolCreated);
@@ -838,7 +846,7 @@ public String onboardingid;
 			BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(CreatedAccount.isDisplayed());
 			String ApheresisCreated = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			System.out.print("Created Apheresis is : " + ApheresisCreated);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Apheresis is : " + ApheresisCreated);
@@ -884,7 +892,7 @@ public String onboardingid;
 			BaseTest.waitforElement(CreatedAccount, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(CreatedAccount.isDisplayed());
 			String manufacturingSiteCreated = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			System.out.print("Created manufacturingSite is : " + manufacturingSiteCreated);
 			ExtentTestManager.getTest().log(LogStatus.INFO,
@@ -925,7 +933,7 @@ public String onboardingid;
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			String productversionCreated = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			System.out.print("Created productversion is : " + productversionCreated);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created productversion is : " + productversionCreated);
@@ -961,7 +969,7 @@ public String onboardingid;
 			BaseTest.waitforElement(Btn_SaveAddress, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			String productversionCreated = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			System.out.print("Created productversion is : " + productversionCreated);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created productversion is : " + productversionCreated);
@@ -974,7 +982,6 @@ public String onboardingid;
 			BaseTest.waitforElement(JuptrStatus_PendingApproval, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(JuptrStatus_PendingApproval.isDisplayed(),
 					"Product version status is not pending approval");
-
 		} catch (InterruptedException e) {
 			System.out.println(e.getMessage());
 			logger.info("The exception is : " + e.getMessage());
@@ -1089,8 +1096,8 @@ public String onboardingid;
 			BaseTest.waitforElement(checkbox_Active_onboarding, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.waitforElement(Btn_Save_Account, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
-			BaseTest.waitforElement(driver.findElement(By.xpath("//div[@title='"+AphersisOBT+"']")), Config.timeouts.LONGWAIT.get());
-			Assert.assertTrue(driver.findElement(By.xpath("//div[@title='"+AphersisOBT+"']")).isDisplayed());
+			BaseTest.waitforElement(driver.findElement(By.xpath("//h1[@title='"+AphersisOBT+"']")), Config.timeouts.LONGWAIT.get());
+			Assert.assertTrue(driver.findElement(By.xpath("//h1[@title='"+AphersisOBT+"']")).isDisplayed());
 			System.out.print("Created Apheresis OnboardingTemplate is : " + AphersisOBT);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Apheresis OnboardingTemplate is : " + AphersisOBT);
 		

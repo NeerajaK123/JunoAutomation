@@ -336,13 +336,14 @@ public class TreatmentsPage {
 			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(txt_Treatment.isDisplayed());
 			String ActualTreatment = driver.findElement(By.xpath(
-					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Actual Treatment name is : " + ActualTreatment);
 			BaseTest.waitforElement(btn_Submit, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(txt_Treatment.isDisplayed());
+			Thread.sleep(3000);
 			String Join = driver.findElement(By.xpath(
 					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='JOIN']//parent::div//div[@class='slds-form-element__static slds-truncate']/span"))
 					.getText();
@@ -401,7 +402,7 @@ public class TreatmentsPage {
 			BaseTest.waitforElement(txt_ProductOrder, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(txt_ProductOrder.isDisplayed());
 			String ProductOrder = driver.findElement(By.xpath(
-					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Product Order name is : " + ProductOrder);
 			Assert.assertTrue(txt_ProductOrderStaus_Scheduling.isDisplayed());
@@ -537,7 +538,7 @@ public String actualTreatment_DoseLevelDoseScheduleStatus(String Apheresis, Stri
 			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(txt_Treatment.isDisplayed());
 			ActualTreatment = driver.findElement(By.xpath(
-					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Actual Treatment name is : " + ActualTreatment);
 			BaseTest.waitforElement(btn_Submit, Config.timeouts.LONGWAIT.get()).click();
@@ -652,7 +653,7 @@ public String actualTreatment_DoseLevelDoseScheduleStatus(String Apheresis, Stri
 			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(txt_Treatment.isDisplayed());
 			String ActualTreatment = driver.findElement(By.xpath(
-					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Created Actual Treatment name is : " + ActualTreatment);
 			BaseTest.waitforElement(btn_Submit, Config.timeouts.LONGWAIT.get()).click();
@@ -754,7 +755,7 @@ public String actualTreatment_DoseLevelDoseScheduleStatus(String Apheresis, Stri
 			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(txt_Treatment.isDisplayed());
 			String ReservationTreatment = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO,
 					"Created Reservation Treatment name is : " + ReservationTreatment);
@@ -791,7 +792,7 @@ public String actualTreatment_DoseLevelDoseScheduleStatus(String Apheresis, Stri
 			BaseTest.waitforElement(txt_Treatment, Config.timeouts.LONGWAIT.get());
 			Assert.assertTrue(txt_Treatment.isDisplayed());
 			String ActualTreatment = driver.findElement(By.xpath(
-					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO,
 					"Converted Reservation Treatment to Actual Treatment name is : " + ActualTreatment);

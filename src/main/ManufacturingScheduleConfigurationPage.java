@@ -110,7 +110,8 @@ public class ManufacturingScheduleConfigurationPage {
 	public WebElement txt_ManufacturingScheduleConfiguration;	
 	
 	
-	
+	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span")
+	public WebElement createdMSC;
 	
 	
 	
@@ -215,9 +216,7 @@ public class ManufacturingScheduleConfigurationPage {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());				
 			BaseTest.waitforElement(txt_ManufacturingScheduleConfiguration, Config.timeouts.LONGWAIT.get());		
 			Assert.assertTrue(txt_ManufacturingScheduleConfiguration.isDisplayed());
-			String ManufacturingScheduleConfiguration = driver.findElement(By.xpath(
-					"//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
-					.getText();
+			String ManufacturingScheduleConfiguration = createdMSC.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Manufacturing Schedule Configuration name is : " + ManufacturingScheduleConfiguration);			
 					
 		} catch (Exception e) {

@@ -93,6 +93,10 @@ public class CongaTemplatesPage {
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Conga Template']")
 	public WebElement txt_CongaTemplate;
 	
+	@FindBy(xpath = "//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span")
+	public WebElement createdCongatemplate;
+	
+	
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[@title='Related']")
 	public WebElement tab_Related;
 	
@@ -157,9 +161,7 @@ public class CongaTemplatesPage {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(txt_CongaTemplate, Config.timeouts.LONGWAIT.get());		
 			Assert.assertTrue(txt_CongaTemplate.isDisplayed());
-			String congaTemplate = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
-					.getText();
+			String congaTemplate = createdCongatemplate.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template Treatment(Actual) name is : " + congaTemplate);
 						
 			BaseTest.waitforElement(tab_Related, Config.timeouts.LONGWAIT.get()).click();
@@ -274,9 +276,7 @@ public class CongaTemplatesPage {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(txt_CongaTemplate, Config.timeouts.LONGWAIT.get());		
 			Assert.assertTrue(txt_CongaTemplate.isDisplayed());
-			String congaTemplate = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
-					.getText();
+			String congaTemplate = createdCongatemplate.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template Shipment Authorization name is : " + congaTemplate);
 						
 		} catch (Exception e) {
@@ -309,9 +309,7 @@ public class CongaTemplatesPage {
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());
 			BaseTest.waitforElement(txt_CongaTemplate, Config.timeouts.LONGWAIT.get());		
 			Assert.assertTrue(txt_CongaTemplate.isDisplayed());
-			String congaTemplate = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
-					.getText();
+			String congaTemplate = createdCongatemplate.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Conga Template MNC Collection Procedure Record name is : " + congaTemplate);
 						
 		} catch (Exception e) {

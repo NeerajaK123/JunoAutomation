@@ -49,19 +49,19 @@ public class PatientsPage {
 	@FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//iframe")
 	public WebElement iframe;	
 
-	@FindBy(xpath = "//div[@class='slds-form-element__control slds-grow']//input[@id='input-3']")
+	@FindBy(xpath = "//label[contains(text(),'First Name')]/following-sibling::div/input")
 	public WebElement txtbx_FirstName;
 
-	@FindBy(xpath = "//div[@class='slds-form-element__control slds-grow']//input[@id='input-4']")
+	@FindBy(xpath = "//label[contains(text(),'Last Name')]/following-sibling::div/input")
 	public WebElement txtbx_LastName;
 	
-	@FindBy(xpath = "//div[@class='slds-form-element__control slds-grow']//input[@id='input-5']")
+	@FindBy(xpath = "//label[contains(text(),'Date Of Birth')]/following-sibling::div/input")
 	public WebElement txtbx_DOB;
 	
 	@FindBy(xpath = "//div[@class='slds-form-element__control slds-grow']//select[@name='selectEnrollmentType']")
 	public WebElement select_EnrollmentType;
 	
-	@FindBy(xpath = "//div[@class='slds-form-element__control slds-grow']//input[@id='input-19']")
+	@FindBy(xpath = "//label[contains(text(),'Subject Number')]/following-sibling::div/input")
 	public WebElement txtbx_SubjectNum;
 	
 	@FindBy(xpath = "//div[@class='slds-form-element__control slds-grow']//select[@name='protocol']")
@@ -176,7 +176,7 @@ public class PatientsPage {
 			BaseTest.waitforElement(txt_Enrollment, Config.timeouts.LONGWAIT.get());		
 			Assert.assertTrue(txt_Enrollment.isDisplayed());
 			enrollment = driver.findElement(By.xpath(
-					"//div[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
+					"//h1[@class='slds-page-header__title slds-m-right--small slds-truncate slds-align-middle']/span"))
 					.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO,"Created Patient Enrollment name is : " + enrollment);	
 			
@@ -203,12 +203,12 @@ public class PatientsPage {
 			BaseTest.waitforElement(btn_Verify, Config.timeouts.LONGWAIT.get()).click();
 			BaseTest.pleasewait(Config.timeouts.LONGWAIT.get());			
 			driver.switchTo().frame(iframe);
-			BaseTest.waitforElement(txtbx_FirstName_Verify, Config.timeouts.LONGWAIT.get()).sendKeys(FName);
-			BaseTest.waitforElement(txtbx_LastName_Verify, Config.timeouts.LONGWAIT.get()).sendKeys(LName);
-			BaseTest.waitforElement(txtbx_DOB_Verify, Config.timeouts.LONGWAIT.get()).sendKeys("22-JAN-1992");			
-			BaseTest.waitforElement(txtbx_SubjectNum_Verify, Config.timeouts.LONGWAIT.get());
-			BaseTest.scrolldowntoVisibility(txtbx_SubjectNum_Verify);			
-			BaseTest.waitforElement(txtbx_SubjectNum_Verify, Config.timeouts.LONGWAIT.get()).sendKeys(SubjectNum);			
+			BaseTest.waitforElement(txtbx_FirstName, Config.timeouts.LONGWAIT.get()).sendKeys(FName);
+			BaseTest.waitforElement(txtbx_LastName, Config.timeouts.LONGWAIT.get()).sendKeys(LName);
+			BaseTest.waitforElement(txtbx_DOB, Config.timeouts.LONGWAIT.get()).sendKeys("22-JAN-1992");			
+			BaseTest.waitforElement(txtbx_SubjectNum, Config.timeouts.LONGWAIT.get());
+			BaseTest.scrolldowntoVisibility(txtbx_SubjectNum);			
+			BaseTest.waitforElement(txtbx_SubjectNum, Config.timeouts.LONGWAIT.get()).sendKeys(SubjectNum);			
 			Utilities.selectfromdropdownwebelement(select_Protocol,Protocol);			
 			BaseTest.waitforElement(btn_Verify_Enroll, Config.timeouts.LONGWAIT.get()).click();	
 			BaseTest.pleasewait(Config.timeouts.MEDIUMWAIT.get());

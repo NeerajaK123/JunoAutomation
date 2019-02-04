@@ -6,8 +6,26 @@
 	</listeners>
 	<test name="Test">
 		<classes>
-		
-<class name="test.TC_ReservationTreatment_ActualTreatment"/> 
+
+
+			<class name="test.TC_NonPrescriber" />
+			<class name="test.TC_SiteCreation" />
+			<class name="test.TC_DepartmentCreation" />
+			<class name="test.TC_ProductCreation" />
+			<class name="test.TC_ProtocolCreation" />
+			<class name="test.TC_Patient_Enrollment_Approval" />
+			<class name="test.TC_ApheresisOnboardingTemplate" />
+			<class name="test.TC_CongaTemplates_ActualTreatment" />
+			<class name="test.TC_CongaTemplates_MNCCollectionProcedureRecord" />
+			<class name="test.TC_CongaTemplates_ProductOrder" />
+			<class name="test.TC_CongaTemplates_ShipmentAuthorisation" />
+			<class name="test.TC_ManufacturingSite" />
+			<class name="test.TC_ApheresisCreation" />
+			<class name="test.TC_ProductVersion_JoinAutoAssign_DL_DS" />
+			<class name="test.TC_ActualTreatment_ChangeReason_ProductOrder" />
+			<class name="test.TC_PVManual_JoinStatus" />
+			<class name="test.TC_TRT_DL_DS_Status" />
+			<class name="test.TC_ReservationTreatment_ActualTreatment" />
 
 		</classes>
 	</test> <!-- Test -->
